@@ -15,5 +15,6 @@
     <modules>
         <module>v1</module>
         <module>v2</module>
+        <module>v3</module>
     </modules>
 </project>
