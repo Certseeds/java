@@ -15,5 +15,6 @@
 
     <modules>
         <module>2020</module>
+        <module>2021</module>
     </modules>
 </project>
