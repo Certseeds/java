@@ -14,5 +14,6 @@
     </parent>
     <modules>
         <module>v1</module>
+        <module>v2</module>
     </modules>
 </project>
