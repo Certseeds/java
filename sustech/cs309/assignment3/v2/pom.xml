@@ -14,4 +14,11 @@
     <build>
         <sourceDirectory>${project.basedir}</sourceDirectory>
     </build>
+    <dependencies>
+        <dependency>
+            <groupId>nanoseeds.sustech.cs309.assignment3</groupId>
+            <artifactId>core</artifactId>
+            <version>${revision}</version>
+        </dependency>
+    </dependencies>
 </project>

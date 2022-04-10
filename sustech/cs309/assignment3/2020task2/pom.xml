@@ -3,9 +3,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>nanoseeds.sustech.cs309.assignment3</groupId>
-    <artifactId>v3</artifactId>
-    <name>nanoseeds.sustech.cs309.assignment3.v3</name>
-    <description>cs309-ooad-assignment3-v3</description>
+    <artifactId>2020task2</artifactId>
+    <name>nanoseeds.sustech.cs309.assignment3.2020task2</name>
+    <description>cs309-ooad-assignment3-2020task2</description>
     <parent>
         <groupId>nanoseeds.sustech.cs309</groupId>
         <artifactId>assignment3</artifactId>
@@ -17,7 +17,7 @@
     <dependencies>
         <dependency>
             <groupId>nanoseeds.sustech.cs309.assignment3</groupId>
-            <artifactId>core</artifactId>
+            <artifactId>2020core</artifactId>
             <version>${revision}</version>
         </dependency>
     </dependencies>

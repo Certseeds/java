@@ -1,4 +1,3 @@
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -7,37 +6,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainPanel extends JPanel implements KeyListener, Subject {
-    private List<Observer> observers = new ArrayList<Observer>();
+    private final List<Observer> observers = new ArrayList<Observer>();
     protected List<Ball> paintingBallList = new ArrayList<>();
     private boolean start = false;
     private int score = 0;
-    private RedBall redBall;
-    private GreenBall greenBall;
-    private BlueBall blueBall;
-    
-    @Override
-    public void registerObserver(Observer o) {
-        observers.add(o);
-    }
-    
-    @Override
-    public void removeObserver(Observer o) {
-        observers.remove(o);
-    }
-    
-    @Override
-    public void notifyObservers(char keyChar) {
-        for (int i = 0; i < observers.size(); i++) {
-            observers.get(i).update(keyChar);
-        }
-    }
-    
-    @Override
-    public void notifyObservers() {
-    }
-    public void add_Balls(Ball ball){
-        this.paintingBallList.add(ball);
-    }
+
     public MainPanel(ArrayList<Ball> balls) {
         for (Ball b : balls) {
             paintingBallList.add(b);
@@ -57,16 +30,33 @@ public class MainPanel extends JPanel implements KeyListener, Subject {
         Timer t = new Timer(20, e -> moveBalls());
         t.start();
     }
-    
-    public void setPaintingBallList(List<Ball> paintingBallList) {
-        this.paintingBallList = paintingBallList;
+
+    @Override
+    public void registerObserver(Observer o) {
+        observers.add(o);
     }
-    
+
+    @Override
+    public void removeObserver(Observer o) {
+        observers.remove(o);
+    }
+
+    @Override
+    public void notifyObservers(char keyChar) {
+        for (Observer observer : observers) {
+            observer.update(keyChar);
+        }
+    }
+
+    @Override
+    public void notifyObservers() {
+    }
+
     public void moveBalls() {
         for (Ball b : paintingBallList) {
             b.move(start);
         }
-        
+
         // collision detection
         for (int i = 0; start && i < paintingBallList.size() - 1; i++) {
             if (paintingBallList.get(i).isVisible()) {
@@ -78,17 +68,17 @@ public class MainPanel extends JPanel implements KeyListener, Subject {
                 }
             }
         }
-        if (!start){
+        if (!start) {
             for (Ball b : paintingBallList) {
                 //if (b.isVisible()){
                 b.setVisible(true);
                 //}
             }
         }
-        
+
         repaint();
     }
-    
+
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -99,7 +89,7 @@ public class MainPanel extends JPanel implements KeyListener, Subject {
                 visibleNum++;
             }
         }
-        
+
         if (visibleNum <= 1) {
             g.setFont(new Font("Arial", Font.PLAIN, 75));
             for (int i = 70; i < 600; i += 100) {
@@ -109,30 +99,30 @@ public class MainPanel extends JPanel implements KeyListener, Subject {
         } else if (start) {
             score += visibleNum;
         }
-        
+
         g.setFont(new Font("Arial", Font.PLAIN, 30));
         g.setColor(Color.BLACK);
         g.drawString("Score: " + score, 20, 40);
-        
+
         this.setBackground(Color.WHITE);
     }
-    
+
     @Override
     public void keyPressed(KeyEvent keyEvent) {
         System.out.println("Key is Pressed");
-        
+
         char keyChar = keyEvent.getKeyChar();
-        
-        if (keyChar == ' '){
+
+        if (keyChar == ' ') {
             start = !start;
         }
         notifyObservers(keyChar);
     }
-    
+
     @Override
     public void keyTyped(KeyEvent keyEvent) {
     }
-    
+
     @Override
     public void keyReleased(KeyEvent keyEvent) {
     }

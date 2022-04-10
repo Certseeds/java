@@ -1,19 +1,19 @@
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.swing.*;
+
 import java.awt.*;
-import java.util.ArrayList;
 
 @Getter
 @Setter
-public abstract class Ball implements Observer {
-    private final int ballSize;
-    public ArrayList<Observer> observers;
-    int jump_distance = 100;
-    int distance_jump = 50;
+public abstract class Ball extends JComponent implements Observer {
+    public static final int TOTAL_NUM = 10;
+    private static int count = 0;
     private Color color;
     private int x, y;
     private int xSpeed, ySpeed;
+    private final int ballSize;
     private boolean visible;
 
     public Ball(Color color, int xSpeed, int ySpeed, int ballSize) {
@@ -21,25 +21,29 @@ public abstract class Ball implements Observer {
         this.xSpeed = xSpeed;
         this.ySpeed = ySpeed;
         this.ballSize = ballSize;
+
         this.visible = true;
-        this.observers = new ArrayList<Observer>();
-        this.x = (int) (Math.random() * 600);
-        this.y = (int) (Math.random() * 600);
+        this.x = (int) (Math.random() * 580);
+        this.y = (int) (Math.random() * 580);
+
+        count++;
+
+        this.setSize(ballSize, ballSize);
     }
 
-
-    public double get_distance(int x1, int y1, int x2, int y2) {
-        return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
+    public static int getCount() {
+        return count;
     }
 
     public void draw(Graphics g) {
         if (isVisible()) {
             g.setColor(this.getColor());
-            g.fillOval(this.getX(), this.getY(), this.getBallSize(), this.getBallSize());
+            setLocation(x, y);
+            g.fillOval(0, 0, this.getBallSize(), this.getBallSize());
         }
     }
 
-    public void move(Boolean start) {
+    public void move() {
         final int newX = this.getX() + this.getXSpeed();
         final int newY = this.getY() + this.getYSpeed();
 
@@ -67,14 +71,24 @@ public abstract class Ball implements Observer {
         return (diffX * diffX) + (diffY * diffY) < dis * dis;
     }
 
-    public void update_public(int x, int y) {
-        if (get_distance(x, y, this.getX(), this.getY()) >= jump_distance) {
-            return;
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        draw(g);
+    }
+
+    public double get_distance(int x1, int y1, int x2, int y2) {
+        return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
+    }
+
+    public boolean update_public(int x, int y, int distanceMax, int distance_jump, Color color) {
+        if (get_distance(x, y, this.getX(), this.getY()) >= distanceMax) {
+            return false;
         }
-        final int high = Math.min(600, this.getY() + distance_jump);
+        final int high = Math.min(630, this.getY() + distance_jump);
         final int low = Math.min(0, this.getY() - distance_jump);
         final int left = Math.min(0, this.getX() - distance_jump);
-        final int right = Math.max(600, this.getX() + distance_jump);
+        final int right = Math.max(720, this.getX() + distance_jump);
         final double leftup = get_distance(x, y, left, high);
         final double leftdown = get_distance(x, y, left, low);
         final double rightup = get_distance(x, y, right, high);
@@ -95,8 +109,9 @@ public abstract class Ball implements Observer {
         final int yspeed = Math.abs(this.getYSpeed());
         this.setXSpeed(level * xspeed);
         this.setYSpeed(vert * yspeed);
-
         System.out.println("jump!");
+        this.setColor(color);
+        return true;
     }
 }
 

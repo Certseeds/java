@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>nanoseeds.sustech.cs309</groupId>
@@ -13,8 +13,13 @@
         <version>${revision}</version>
     </parent>
     <modules>
+        <module>core</module>
         <module>v1</module>
         <module>v2</module>
         <module>v3</module>
+        <module>2020core</module>
+        <module>2020task1</module>
+        <module>2020task2</module>
+        <module>2020task3</module>
     </modules>
 </project>

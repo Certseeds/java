@@ -1,17 +1,18 @@
+import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.*;
 
 public class MainPanel extends JPanel implements KeyListener {
 
+    private final Ball redBall;
+    private final Ball greenBall;
+    private final Ball blueBall;
     private List<Ball> paintingBallList = new ArrayList<>();
     private boolean start = false;
     private int score = 0;
-    private Ball redBall;
-    private Ball greenBall;
-    private Ball blueBall;
 
 
     public MainPanel() {
@@ -85,7 +86,7 @@ public class MainPanel extends JPanel implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent keyEvent) {
-        char keyChar = keyEvent.getKeyChar();
+        final char keyChar = keyEvent.getKeyChar();
 
         if (keyChar == ' ') {
             start = !start;
@@ -98,18 +99,10 @@ public class MainPanel extends JPanel implements KeyListener {
         }
 
         switch (keyChar) {
-            case 'a':
-                greenBall.setXSpeed(Math.abs(greenBall.getXSpeed()) * -1);
-                break;
-            case 'd':
-                greenBall.setXSpeed(Math.abs(greenBall.getXSpeed()));
-                break;
-            case 'w':
-                greenBall.setYSpeed(Math.abs(greenBall.getYSpeed()) * -1);
-                break;
-            case 's':
-                greenBall.setYSpeed(Math.abs(greenBall.getYSpeed()));
-                break;
+            case 'a' -> greenBall.setXSpeed(Math.abs(greenBall.getXSpeed()) * -1);
+            case 'd' -> greenBall.setXSpeed(Math.abs(greenBall.getXSpeed()));
+            case 'w' -> greenBall.setYSpeed(Math.abs(greenBall.getYSpeed()) * -1);
+            case 's' -> greenBall.setYSpeed(Math.abs(greenBall.getYSpeed()));
         }
 
         blueBall.setXSpeed(-1 * blueBall.getXSpeed());

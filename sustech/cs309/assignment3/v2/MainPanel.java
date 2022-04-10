@@ -6,13 +6,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainPanel extends JPanel implements KeyListener, Subject {
-    private List<Observer> observers = new ArrayList<Observer>();
-    private List<Ball> paintingBallList = new ArrayList<>();
+    private final List<Observer> observers = new ArrayList<Observer>();
+    private final List<Ball> paintingBallList = new ArrayList<>();
+    private final RedBall redBall;
+    private final GreenBall greenBall;
+    private final BlueBall blueBall;
     private boolean start = false;
     private int score = 0;
-    private RedBall redBall;
-    private GreenBall greenBall;
-    private BlueBall blueBall;
 
     public MainPanel() {
         /*
@@ -37,7 +37,7 @@ public class MainPanel extends JPanel implements KeyListener, Subject {
         setFocusable(true);
         setPreferredSize(new Dimension(600, 600));
         addKeyListener(this);
-        Timer t = new Timer(20, e -> moveBalls());
+        final Timer t = new Timer(20, e -> moveBalls());
         t.start();
     }
 
@@ -53,17 +53,13 @@ public class MainPanel extends JPanel implements KeyListener, Subject {
 
     @Override
     public void notifyObservers(char keyChar) {
-        for (int i = 0; i < observers.size(); i++) {
-            observers.get(i).update(keyChar);
+        for (Observer observer : observers) {
+            observer.update(keyChar);
         }
     }
 
     @Override
     public void notifyObservers() {
-    }
-
-    public void setPaintingBallList(List<Ball> paintingBallList) {
-        this.paintingBallList = paintingBallList;
     }
 
     public void moveBalls() {

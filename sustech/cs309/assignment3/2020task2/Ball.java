@@ -1,15 +1,18 @@
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.swing.*;
 import java.awt.*;
 
 @Getter
 @Setter
-public class Ball {
-    private final int ballSize;
+public abstract class Ball extends JComponent implements Observer {
+    public static final int TOTAL_NUM = 10;
+    private static int count = 0;
     private Color color;
     private int x, y;
     private int xSpeed, ySpeed;
+    private final int ballSize;
     private boolean visible;
 
     public Ball(Color color, int xSpeed, int ySpeed, int ballSize) {
@@ -19,14 +22,23 @@ public class Ball {
         this.ballSize = ballSize;
 
         this.visible = true;
-        this.x = (int) (Math.random() * 600);
-        this.y = (int) (Math.random() * 600);
+        this.x = (int) (Math.random() * 580);
+        this.y = (int) (Math.random() * 580);
+
+        count++;
+
+        this.setSize(ballSize, ballSize);
+    }
+
+    public static int getCount() {
+        return count;
     }
 
     public void draw(Graphics g) {
         if (isVisible()) {
             g.setColor(this.getColor());
-            g.fillOval(this.getX(), this.getY(), this.getBallSize(), this.getBallSize());
+            setLocation(x, y);
+            g.fillOval(0, 0, this.getBallSize(), this.getBallSize());
         }
     }
 
@@ -51,11 +63,18 @@ public class Ball {
     }
 
     public boolean isIntersect(Ball b) {
-        int diffX = this.getX() - b.getX();
-        int diffY = this.getY() - b.getY();
-        double dis = (this.getBallSize() + b.getBallSize()) / 2.0;
+        final int diffX = this.getX() - b.getX();
+        final int diffY = this.getY() - b.getY();
+        final double dis = (this.getBallSize() + b.getBallSize()) / 2.0;
 
         return (diffX * diffX) + (diffY * diffY) < dis * dis;
     }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        draw(g);
+    }
+
 }
 

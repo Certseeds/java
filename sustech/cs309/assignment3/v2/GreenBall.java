@@ -9,18 +9,10 @@ public class GreenBall extends Ball implements Subject {
 
     public void update(char keyChar) {
         switch (keyChar) {
-            case 'a':
-                this.setXSpeed(Math.abs(this.getXSpeed()) * -1);
-                break;
-            case 'd':
-                this.setXSpeed(Math.abs(this.getXSpeed()));
-                break;
-            case 'w':
-                this.setYSpeed(Math.abs(this.getYSpeed()) * -1);
-                break;
-            case 's':
-                this.setYSpeed(Math.abs(this.getYSpeed()));
-                break;
+            case 'a' -> this.setXSpeed(Math.abs(this.getXSpeed()) * -1);
+            case 'd' -> this.setXSpeed(Math.abs(this.getXSpeed()));
+            case 'w' -> this.setYSpeed(Math.abs(this.getYSpeed()) * -1);
+            case 's' -> this.setYSpeed(Math.abs(this.getYSpeed()));
         }
     }
 
@@ -36,8 +28,7 @@ public class GreenBall extends Ball implements Subject {
 
     @Override
     public void notifyObservers() {
-        for (int i = 0; i < observers.size(); i++) {
-            Observer temp = this.observers.get(i);
+        for (Observer temp : observers) {
             temp.update(this.getX(), this.getY());
         }
     }
@@ -46,7 +37,6 @@ public class GreenBall extends Ball implements Subject {
     public void notifyObservers(char keyChar) {}
 
     @Override
-
     public void move() {
         super.move();
         this.notifyObservers();

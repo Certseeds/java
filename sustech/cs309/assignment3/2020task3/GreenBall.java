@@ -1,13 +1,26 @@
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GreenBall extends Ball implements Subject {
+    private final List<Observer> observers = new ArrayList<>();
+
     public GreenBall(Color color, int xSpeed, int ySpeed, int ballSize) {
         super(color, xSpeed, ySpeed, ballSize);
     }
 
-    public void update(int x, int y) {}
+    @Override
+    public boolean isCollision() {return false;}
 
+    @Override
+    public void move() {
+        super.move();
+        this.notifyObservers();
+    }
+
+    @Override
     public void update(char keyChar) {
+        System.out.println("Green Update");
         switch (keyChar) {
             case 'a' -> this.setXSpeed(Math.abs(this.getXSpeed()) * -1);
             case 'd' -> this.setXSpeed(Math.abs(this.getXSpeed()));
@@ -17,36 +30,26 @@ public class GreenBall extends Ball implements Subject {
     }
 
     @Override
-    public void update(Ball ball) {
-
-    }
+    public void update(int x, int y) {}
 
     @Override
     public void registerObserver(Observer o) {
-        this.observers.add(o);
+        observers.add(o);
     }
 
     @Override
     public void removeObserver(Observer o) {
-        this.observers.remove(o);
-    }
-
-    @Override
-    public void notifyObservers() {
-        for (Observer temp : observers) {
-            temp.update(this.getX(), this.getY());
-        }
+        observers.remove(o);
     }
 
     @Override
     public void notifyObservers(char keyChar) {}
 
     @Override
-
-    public void move(Boolean start) {
-        if (start) {
-            notifyObservers();
+    public void notifyObservers() {
+        for (Observer observer : observers) {
+            observer.update(this.getX(), this.getY());
         }
-        super.move(start);
+        observers.removeIf(Observer::isCollision);
     }
 }

@@ -1,8 +1,10 @@
-
 public interface Subject {
-    public void registerObserver(Observer o);
-    public void removeObserver(Observer o);
-    public void notifyObservers(char keyChar);
-    public void notifyObservers();
+    void registerObserver(Observer o);
+
+    void removeObserver(Observer o);
+
+    void notifyObservers(char keyChar);
+
+    void notifyObservers();
 }
 

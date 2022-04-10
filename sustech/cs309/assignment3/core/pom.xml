@@ -3,9 +3,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>nanoseeds.sustech.cs309.assignment3</groupId>
-    <artifactId>v3</artifactId>
-    <name>nanoseeds.sustech.cs309.assignment3.v3</name>
-    <description>cs309-ooad-assignment3-v3</description>
+    <artifactId>core</artifactId>
+    <name>nanoseeds.sustech.cs309.assignment3.core</name>
+    <description>cs309-ooad-assignment3-core</description>
+    <packaging>jar</packaging>
     <parent>
         <groupId>nanoseeds.sustech.cs309</groupId>
         <artifactId>assignment3</artifactId>
@@ -14,11 +15,4 @@
     <build>
         <sourceDirectory>${project.basedir}</sourceDirectory>
     </build>
-    <dependencies>
-        <dependency>
-            <groupId>nanoseeds.sustech.cs309.assignment3</groupId>
-            <artifactId>core</artifactId>
-            <version>${revision}</version>
-        </dependency>
-    </dependencies>
 </project>

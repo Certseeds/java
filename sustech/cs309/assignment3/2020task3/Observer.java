@@ -3,5 +3,5 @@ public interface Observer {
 
     void update(int x, int y);
 
-    void update(Ball ball);
+    boolean isCollision();
 }

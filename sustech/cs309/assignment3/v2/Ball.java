@@ -1,14 +1,19 @@
+import lombok.Getter;
+import lombok.Setter;
+
 import java.awt.*;
 import java.util.ArrayList;
 
+@Getter
+@Setter
 public abstract class Ball implements Observer {
+    private final int ballSize;
     public ArrayList<Observer> observers;
     int jump_distance = 100;
     int distance_jump = 50;
     private Color color;
     private int x, y;
     private int xSpeed, ySpeed;
-    private int ballSize;
     private boolean visible;
 
     public Ball(Color color, int xSpeed, int ySpeed, int ballSize) {
@@ -22,59 +27,6 @@ public abstract class Ball implements Observer {
         this.y = (int) (Math.random() * 600);
     }
 
-    public Color getColor() {
-        return this.color;
-    }
-
-    public void setColor(Color newColor) {
-        this.color = newColor;
-    }
-
-    public int getX() {
-        return x;
-    }
-
-    public void setX(int x) {
-        this.x = x;
-    }
-
-    public int getY() {
-        return y;
-    }
-
-    public void setY(int y) {
-        this.y = y;
-    }
-
-    public int getYSpeed() {
-        return ySpeed;
-    }
-
-    public void setYSpeed(int ySpeed) {
-        this.ySpeed = ySpeed;
-    }
-
-    public int getXSpeed() {
-        return xSpeed;
-    }
-
-    public void setXSpeed(int xSpeed) {
-        this.xSpeed = xSpeed;
-    }
-
-    public int getBallSize() {
-        return ballSize;
-    }
-
-    public boolean isVisible() {
-        return visible;
-    }
-
-    public void setVisible(boolean visible) {
-        this.visible = visible;
-    }
-
-
     public double get_distance(int x1, int y1, int x2, int y2) {
         return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
     }
@@ -87,8 +39,8 @@ public abstract class Ball implements Observer {
     }
 
     public void move() {
-        int newX = this.getX() + this.getXSpeed();
-        int newY = this.getY() + this.getYSpeed();
+        final int newX = this.getX() + this.getXSpeed();
+        final int newY = this.getY() + this.getYSpeed();
 
         this.setX(newX);
         this.setY(newY);
@@ -107,9 +59,9 @@ public abstract class Ball implements Observer {
     }
 
     public boolean isIntersect(Ball b) {
-        int diffX = this.getX() - b.getX();
-        int diffY = this.getY() - b.getY();
-        double dis = (this.getBallSize() + b.getBallSize()) / 2.0;
+        final int diffX = this.getX() - b.getX();
+        final int diffY = this.getY() - b.getY();
+        final double dis = (this.getBallSize() + b.getBallSize()) / 2.0;
 
         return (diffX * diffX) + (diffY * diffY) < dis * dis;
     }
@@ -118,14 +70,14 @@ public abstract class Ball implements Observer {
         if (get_distance(x, y, this.getX(), this.getY()) >= jump_distance) {
             return;
         }
-        int high = Math.min(600, this.getY() + distance_jump);
-        int low = Math.min(0, this.getY() - distance_jump);
-        int left = Math.min(0, this.getX() - distance_jump);
-        int right = Math.max(600, this.getX() + distance_jump);
-        double leftup = get_distance(x, y, left, high);
-        double leftdown = get_distance(x, y, left, low);
-        double rightup = get_distance(x, y, right, high);
-        double rightdown = get_distance(x, y, right, low);
+        final int high = Math.min(600, this.getY() + distance_jump);
+        final int low = Math.min(0, this.getY() - distance_jump);
+        final int left = Math.min(0, this.getX() - distance_jump);
+        final int right = Math.max(600, this.getX() + distance_jump);
+        final double leftup = get_distance(x, y, left, high);
+        final double leftdown = get_distance(x, y, left, low);
+        final double rightup = get_distance(x, y, right, high);
+        final double rightdown = get_distance(x, y, right, low);
         int level = 1;
         int vert = 1;
         if (leftup > Math.max(leftdown, Math.max(rightup, rightdown))) {
@@ -138,8 +90,8 @@ public abstract class Ball implements Observer {
         }
         this.setX(this.getX() + distance_jump * level);
         this.setY(this.getY() + distance_jump * vert);
-        int xspeed = Math.abs(this.getXSpeed());
-        int yspeed = Math.abs(this.getYSpeed());
+        final int xspeed = Math.abs(this.getXSpeed());
+        final int yspeed = Math.abs(this.getYSpeed());
         this.setXSpeed(level * xspeed);
         this.setYSpeed(vert * yspeed);
 
