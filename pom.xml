@@ -24,6 +24,7 @@
     </properties>
     <modules>
         <module>springboot</module>
+        <module>sustech</module>
     </modules>
     <dependencies>
         <dependency>

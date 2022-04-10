@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>nanoseeds.sustech.cs309.assignment3</groupId>
+    <artifactId>v1</artifactId>
+    <name>nanoseeds.sustech.cs309.assignment3.v1</name>
+    <description>cs309-ooad-assignment3-v1</description>
+    <parent>
+        <groupId>nanoseeds.sustech.cs309</groupId>
+        <artifactId>assignment3</artifactId>
+        <version>${revision}</version>
+    </parent>
+    <build>
+        <sourceDirectory>${project.basedir}</sourceDirectory>
+    </build>
+</project>

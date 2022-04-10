@@ -11,13 +11,9 @@ jobs:
     strategy:
       matrix:
         os: [ ubuntu-latest, windows-latest ]
-        java_v: [ 8,11,17 ] # Version of java
+        java_v: [ 17 ] # Version of java
     env:
       JAVA_VERSION: ${{ matrix.java_v }}
-      GITHUB_TOKEN: ${{ secrets.AUTH_TOKEN }}
-    defaults:
-      run:
-        working-directory: ./springboot
     steps:
       - uses: actions/checkout@v3
       - name: Set up JDK
@@ -32,6 +28,3 @@ jobs:
 
       - name: Build with Maven
         run: mvn compile
-
-      - name: Test with Maven
-        run: mvn test
