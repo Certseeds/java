@@ -1,0 +1,40 @@
+# This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
+# For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-maven
+
+name: Java CI with Maven
+
+on:
+  push:
+    paths:
+      - 'springboot/**'
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ ubuntu-latest, windows-latest ]
+        java_v: [ 8,11,17 ] # Version of java
+    env:
+      JAVA_VERSION: ${{ matrix.java_v }}
+      GITHUB_TOKEN: ${{ secrets.AUTH_TOKEN }}
+    defaults:
+      run:
+        working-directory: ./springboot
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          java-version: ${{ matrix.java_v }}
+          distribution: 'temurin'
+          cache: maven
+
+      - name: Use java and javac
+        run: javac -version; java -version
+
+      - name: Build with Maven
+        run: mvn compile
+
+      - name: Test with Maven
+        run: mvn test

@@ -1,0 +1,36 @@
+logging:
+  level:
+    root: debug
+  file:
+    path: ./log
+spring:
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:springboot;MODE=MySQL;DATABASE_TO_LOWER=TRUE
+    # 初始化数据表 DDL
+    #  初始化数据 DML
+  h2:
+    #    开启console 访问 默认false
+    console:
+      enabled: true
+      settings:
+        #      开启h2 console 跟踪 方便调试  默认 false
+        trace: true
+        #      允许console 远程访问 默认false
+        web-allow-others: true
+      #  h2 访问路径上下文
+      path: /h2-console
+  jpa:
+    open-in-view: false
+    database: H2
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  sql:
+    init:
+      schema-locations: classpath:db/schema.sql
+      data-locations: classpath:db/data.sql
+server:
+  port: ${port:9664} # 获取环境变量中的port,默认值9664
+account:
+  token: ${GITHUB_TOKEN:114514}
