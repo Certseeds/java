@@ -11,7 +11,7 @@
     <groupId>nanoseeds</groupId>
     <artifactId>java</artifactId>
     <version>${revision}</version>
-    <name>java</name>
+    <name>nanoseeds.java</name>
     <description>base for all nanoseeds' java project</description>
     <packaging>pom</packaging>
     <properties>

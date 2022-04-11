@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>springboot</artifactId>
     <version>${revision}</version>
-    <name>springboot</name>
+    <name>nanoseeds.springboot</name>
     <description>springboot base repo</description>
     <parent>
         <groupId>nanoseeds</groupId>

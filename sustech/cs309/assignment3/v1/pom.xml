@@ -17,7 +17,7 @@
     <dependencies>
         <dependency>
             <groupId>nanoseeds.sustech.cs309.assignment3</groupId>
-            <artifactId>core</artifactId>
+            <artifactId>cs309_assignment3_2021core</artifactId>
             <version>${revision}</version>
         </dependency>
     </dependencies>

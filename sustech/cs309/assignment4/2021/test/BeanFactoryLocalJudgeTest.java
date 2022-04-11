@@ -12,6 +12,7 @@ public class BeanFactoryLocalJudgeTest {
 
     @BeforeAll
     static void setup() {
+        System.out.println(new File(".").getAbsoluteFile());
         beanFactory = new BeanFactoryImpl();
         beanFactory.loadInjectProperties(new File("test/resources/inject.properties"));
         beanFactory.loadValueProperties(new File("test/resources/value.properties"));

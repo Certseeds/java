@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>nanoseeds.sustech.cs309</groupId>
+    <artifactId>design</artifactId>
+    <name>nanoseeds.sustech.cs309.design</name>
+    <description>cs309-ooad-design</description>
+    <packaging>pom</packaging>
+    <parent>
+        <groupId>nanoseeds.sustech</groupId>
+        <artifactId>cs309</artifactId>
+        <version>${revision}</version>
+    </parent>
+    <modules>
+        <module>core</module>
+        <module>abstract_factory</module>
+        <module>factory_method</module>
+        <module>simple_factory</module>
+        <module>singleton</module>
+        <module>static_factory</module>
+    </modules>
+</project>

@@ -40,32 +40,20 @@ public class ContainerImplTest {
     @Test
     public void testRegisterNull() {
         System.out.println(4);
-        assertThrows(IllegalArgumentException.class, () -> {
-            container.register(null);
-        });
-        assertThrows(IllegalArgumentException.class, () -> {
-            container.register(null, null);
-        });
-        assertThrows(IllegalArgumentException.class, () -> {
-            container.register(E.class, null);
-        });
+        assertThrows(IllegalArgumentException.class, () -> container.register(null));
+        assertThrows(IllegalArgumentException.class, () -> container.register(null, null));
+        assertThrows(IllegalArgumentException.class, () -> container.register(E.class, null));
     }
 
     @Test
     public void testResolveNull() {
-        assertThrows(IllegalArgumentException.class, () -> {
-            container.resolve(null);
-        });
+        assertThrows(IllegalArgumentException.class, () -> container.resolve(null));
     }
 
     @Test
     public void testRegisterAbstractClassOrInterface() {
-        assertThrows(IllegalArgumentException.class, () -> {
-            container.register(F.class);
-        });
-        assertThrows(IllegalArgumentException.class, () -> {
-            container.register(E.class);
-        });
+        assertThrows(IllegalArgumentException.class, () -> container.register(F.class));
+        assertThrows(IllegalArgumentException.class, () -> container.register(E.class));
     }
 
     @Test
@@ -117,16 +105,12 @@ public class ContainerImplTest {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        var exception = assertThrows(ServiceNotFoundException.class, () -> {
-            container.resolve(B.class);
-        });
+        assertThrows(ServiceNotFoundException.class, () -> container.resolve(B.class));
     }
 
     @Test
     public void testServiceNotFound() {
-        var exception = assertThrows(ServiceNotFoundException.class, () -> {
-            container.resolve(A.class);
-        });
+        assertThrows(ServiceNotFoundException.class, () -> container.resolve(A.class));
     }
 
     @Test
@@ -179,9 +163,7 @@ public class ContainerImplTest {
 
     @Test
     public void testRegisterClassWithMultipleConstructors() {
-        assertThrows(IllegalArgumentException.class, () -> {
-            container.register(L.class);
-        });
+        assertThrows(IllegalArgumentException.class, () -> container.register(L.class));
     }
 
     @Test
