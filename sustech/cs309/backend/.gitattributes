@@ -1,0 +1,6 @@
+* text=auto
+
+# scripts
+*.html text eol=lf  linguist-vendored
+*.css text eol=lf  linguist-vendored
+*.js text eol=lf  linguist-vendored

@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    url: jdbc:sqlite:mydb.sqlite
+    driver-class-name: org.sqlite.JDBC
+    username: noneed
+    password: noneed
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:build.sql
+  jpa:
+    database-platform: org.hibernate.dialect.SQLiteDialect
+    generate-ddl: false
+    # 最好改成false，自己手动建表
+  thymeleaf:
+    #这个是配置html资源目录，如果直接放在templates下不用配置
+    #prefix: classpath:/templates/view/
+    cache: false
+
+server:
+  port: ${port:8888}
+
+
