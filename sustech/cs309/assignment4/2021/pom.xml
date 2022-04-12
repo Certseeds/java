@@ -3,7 +3,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>nanoseeds.sustech.cs309.assignment4</groupId>
-    <artifactId>2021</artifactId>
+    <artifactId>cs309_assignment4_2021</artifactId>
     <name>nanoseeds.sustech.cs309.assignment4.2021</name>
     <description>cs309-ooad-assignment4-2021</description>
 
