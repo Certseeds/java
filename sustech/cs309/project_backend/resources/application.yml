@@ -1,0 +1,31 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/dboj
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: 123
+  mail:
+    protocol: smtps
+    host: smtp.qq.com
+    username: *
+    password: *
+    port: 465
+    default-encoding: UTF-8
+    smtp:
+      socketFactory:
+        class: javax.net.ssl.SSLSocketFactory
+        fallback: false
+    properties:
+      mail:
+        smtp:
+          auth: true
+      starttls:
+        enable: true
+        required: true
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:build.sql
+      data-locations: classpath:testData.sql
+server:
+  port: ${port:8888}

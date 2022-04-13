@@ -19,5 +19,6 @@
         <module>assignment5</module>
         <module>design</module>
         <module>backend</module>
+        <module>project_backend</module>
     </modules>
 </project>
