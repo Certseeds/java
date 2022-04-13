@@ -1,19 +1,24 @@
 package backend.controller;
 
 import backend.repository.TokenRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.annotation.Resource;
 import java.util.Map;
 
 @Controller
 public class TableController {
-    static final int DAY_SECOND = 24 * 60 * 60;
-    @Resource
-    TokenRepository tokenRepository;
+    private static final int DAY_SECOND = 24 * 60 * 60;
+
+    @Autowired
+    public TableController(TokenRepository tokenRepository) {
+        this.tokenRepository = tokenRepository;
+    }
+
+    private final TokenRepository tokenRepository;
 
     @PostMapping("/table")
     public String getCorrectOrNot(@RequestParam Map<String, String> params, Model model) {

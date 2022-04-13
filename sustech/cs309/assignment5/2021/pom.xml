@@ -6,17 +6,14 @@
     <artifactId>cs309_assignment5_2021</artifactId>
     <name>nanoseeds.sustech.cs309.assignment5.2021</name>
     <description>cs309-ooad-assignment5-2021</description>
-
-    <packaging>pom</packaging>
+    <packaging>jar</packaging>
     <parent>
         <groupId>nanoseeds.sustech.cs309</groupId>
         <artifactId>assignment5</artifactId>
         <version>${revision}</version>
     </parent>
-    <modules>
-        <module>core</module>
-        <module>origin</module>
-        <module>adapter</module>
-        <module>multi_adapter</module>
-    </modules>
+    <build>
+        <sourceDirectory>${project.basedir}/src</sourceDirectory>
+        <testSourceDirectory>${project.basedir}/test</testSourceDirectory>
+    </build>
 </project>

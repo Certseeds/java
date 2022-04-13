@@ -2,10 +2,12 @@ package backend.model;
 
 import lombok.Data;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 @Data
 public class MovieDo implements Serializable {
+    @Serial
     private static final long serialVersionUID = 1148517200L;
     private String title;
     private String date;

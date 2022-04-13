@@ -1,17 +1,24 @@
 package backend.model;
 
-import lombok.Data;
+import lombok.*;
+import org.hibernate.Hibernate;
 
 import javax.persistence.*;
+import java.io.Serial;
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * @author nanos
  */
 @Entity
-@Data
+@Getter
+@Setter
+@ToString
+@RequiredArgsConstructor
 @Table(name = "movie_table")
 public class Movie implements Serializable {
+    @Serial
     private static final long serialVersionUID = 1148517201L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,10 +39,6 @@ public class Movie implements Serializable {
     @Column(name = "type", nullable = false)
     private String type;
 
-
-    public Movie() {
-    }
-
     public Movie(Long autoId) {
         this.autoId = autoId;
     }
@@ -48,5 +51,18 @@ public class Movie implements Serializable {
         this.movieHall = movie.getMovieHall();
         this.price = movie.getPrice();
         this.type = movie.getType();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {return true;}
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)){ return false;}
+        final Movie movie = (Movie) o;
+        return autoId != null && Objects.equals(autoId, movie.autoId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(autoId, title, date, startTime, duration, movieHall, price, type);
     }
 }

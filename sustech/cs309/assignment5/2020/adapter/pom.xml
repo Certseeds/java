@@ -2,14 +2,14 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>nanoseeds.sustech.cs309.assignment5.cs309_assignment5_2021</groupId>
-    <artifactId>cs309_assignment5_2021multi_adapter</artifactId>
-    <name>nanoseeds.sustech.cs309.assignment5.2021.multi_adapter</name>
-    <description>cs309-ooad-assignment5-2021multi_adapter</description>
+    <groupId>nanoseeds.sustech.cs309.assignment5.cs309_assignment5_2020</groupId>
+    <artifactId>cs309_assignment5_2020adapter</artifactId>
+    <name>nanoseeds.sustech.cs309.assignment5.2020.adapter</name>
+    <description>cs309-ooad-assignment5-2020adapter</description>
     <packaging>jar</packaging>
     <parent>
         <groupId>nanoseeds.sustech.cs309.assignment5</groupId>
-        <artifactId>cs309_assignment5_2021</artifactId>
+        <artifactId>cs309_assignment5_2020</artifactId>
         <version>${revision}</version>
     </parent>
     <build>
@@ -17,8 +17,8 @@
     </build>
     <dependencies>
         <dependency>
-            <groupId>nanoseeds.sustech.cs309.assignment5.cs309_assignment5_2021</groupId>
-            <artifactId>cs309_assignment5_2021core</artifactId>
+            <groupId>nanoseeds.sustech.cs309.assignment5.cs309_assignment5_2020</groupId>
+            <artifactId>cs309_assignment5_2020core</artifactId>
             <version>${revision}</version>
         </dependency>
     </dependencies>

@@ -6,20 +6,23 @@ import backend.model.User;
 import backend.model.UserDO;
 import backend.repository.TokenRepository;
 import backend.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.annotation.Resource;
 import java.util.UUID;
 
 @RestController
 public class UserController {
-    @Resource
-    UserRepository userRepository;
+    @Autowired
+    public UserController(UserRepository userRepository, TokenRepository tokenRepository) {
+        this.userRepository = userRepository;
+        this.tokenRepository = tokenRepository;
+    }
 
-    @Resource
-    TokenRepository tokenRepository;
+    private final UserRepository userRepository;
+    private final TokenRepository tokenRepository;
 
     @PostMapping("/token")
     public TokenDo getToken(@RequestBody UserDO userDO) {
