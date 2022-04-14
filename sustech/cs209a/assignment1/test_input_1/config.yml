@@ -1,0 +1,11 @@
+Prefix: sustech_
+Postfix: _cs
+OutputPath: ./test_output_1
+InputCsvPath: ./test_input_1/input.csv
+InputTxtPath: ./test_input_1/indata
+TargetEncoding: UTF-8
+CategorizeBy:
+  - Field
+  - Source
+  - Date
+SummaryPath: ./test_output_1/newout.csv

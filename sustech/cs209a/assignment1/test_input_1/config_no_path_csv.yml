@@ -1,0 +1,8 @@
+Prefix: hi_
+Postfix: _there
+
+InputTxtPath: D:\tmp\java2problem1\indata
+OutputPath: D:\tmp\txtout
+TargetEncoding: UTF-8
+CategorizeBy: []
+SummaryPath: D:\tmp\java2problem1\newout.csv

@@ -1,0 +1,11 @@
+Prefix: hi_
+Postfix: _there
+OutputPath: ./test_output_1
+InputCsvPath: ./test_input_1/NO_SUCH_INPUT_FILE.csv
+InputTxtPath: ./test_input_1/indata
+TargetEncoding: UTF-8
+CategorizeBy:
+  - Field
+  - Source
+  - Date
+SummaryPath: ./test_output_1/newout.csv

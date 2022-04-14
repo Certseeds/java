@@ -4,6 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>nanoseeds.sustech.cs309</groupId>
     <artifactId>design</artifactId>
+    <version>${revision}</version>
     <name>nanoseeds.sustech.cs309.design</name>
     <description>cs309-ooad-design</description>
     <packaging>pom</packaging>

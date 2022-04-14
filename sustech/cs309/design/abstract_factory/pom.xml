@@ -4,6 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>nanoseeds.sustech.cs309.design</groupId>
     <artifactId>abstract_factory</artifactId>
+    <version>${revision}</version>
     <name>nanoseeds.sustech.cs309.design.abstract_factory</name>
     <description>cs309-ooad-design-abstract_factory</description>
     <parent>

@@ -3,19 +3,17 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>sustech</artifactId>
-    <version>${revision}</version>
-    <description>sustech projects folder</description>
-    <name>nanoseeds.sustech</name>
+    <groupId>nanoseeds.sustech</groupId>
+    <artifactId>cs209a</artifactId>
+    <name>nanoseeds.sustech.cs209a</name>
+    <description>cs209a-java2-2020f</description>
     <packaging>pom</packaging>
-
     <parent>
         <groupId>nanoseeds</groupId>
-        <artifactId>java</artifactId>
+        <artifactId>sustech</artifactId>
         <version>${revision}</version>
     </parent>
     <modules>
-        <module>cs309</module>
-        <module>cs209a</module>
+        <module>assignment1</module>
     </modules>
 </project>
