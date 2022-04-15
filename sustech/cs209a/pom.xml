@@ -16,5 +16,6 @@
     <modules>
         <module>assignment1</module>
         <module>week01</module>
+        <module>week02</module>
     </modules>
 </project>
