@@ -15,5 +15,6 @@
     </parent>
     <modules>
         <module>assignment1</module>
+        <module>week01</module>
     </modules>
 </project>

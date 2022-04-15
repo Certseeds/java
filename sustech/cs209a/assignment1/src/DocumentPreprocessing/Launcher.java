@@ -1,14 +1,10 @@
 package DocumentPreprocessing;
 
-import org.apache.commons.io.FilenameUtils;
 import org.apache.tika.parser.txt.CharsetDetector;
 import org.apache.tika.parser.txt.CharsetMatch;
-import org.bouncycastle.util.encoders.UTF8;
 import org.yaml.snakeyaml.Yaml;
 
-import javax.xml.crypto.Data;
 import java.io.*;
-import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
