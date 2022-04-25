@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class NoArgsController {
     private final GithubService githubService;
 
-
     @GetMapping("/zen")
     public String zen() {
         return githubService.zen();

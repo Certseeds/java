@@ -92,9 +92,9 @@ public class TestSortRunningTimeSurvey {
                         // "origin"  Long time = (Long) method.invoke(null, n);
                         // add the run time to the sheet
                         // col row data
-                        Long times = (Long) count(n, functions);
+                        long times = count(n, functions);
                         //System.out.println(time + " " + times);
-                        sheet.addCell(new Label(i + 1, j + 1, times.toString()));
+                        sheet.addCell(new Label(i + 1, j + 1, Long.toString(times)));
                     }
 
                 }

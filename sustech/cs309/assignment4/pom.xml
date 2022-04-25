@@ -12,7 +12,6 @@
         <artifactId>cs309</artifactId>
         <version>${revision}</version>
     </parent>
-
     <modules>
         <module>2020</module>
         <module>2021</module>
