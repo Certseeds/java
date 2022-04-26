@@ -3,7 +3,7 @@
     {
       "name": "account.token",
       "type": "java.lang.String",
-      "description": "Description for account.token."
+      "description": "github user token."
     }
   ]
 }
