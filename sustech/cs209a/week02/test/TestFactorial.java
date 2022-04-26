@@ -1,6 +1,5 @@
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class TestFactorial {
 
@@ -25,8 +24,8 @@ public class TestFactorial {
 
     @Test
     public void factTest2() {
-        assertThrows(RuntimeException.class, () -> factorial(-1));
-        assertThrows(RuntimeException.class, () -> factorial(21));
+        Assertions.assertThrows(RuntimeException.class, () -> factorial(-1));
+        Assertions.assertThrows(RuntimeException.class, () -> factorial(21));
     }
 
 

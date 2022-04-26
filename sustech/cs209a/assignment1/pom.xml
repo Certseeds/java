@@ -14,6 +14,8 @@
     <name>nanoseeds.sustech.cs209a.cs209a_2020S_assignment1</name>
     <description>2020Spring's cs209a assignment1</description>
     <properties>
+        <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <org.apache.tika.version>1.28.1</org.apache.tika.version>
     </properties>
     <dependencies>
@@ -31,13 +33,7 @@
             <artifactId>tika-parsers</artifactId>
             <version>${org.apache.tika.version}</version>
         </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <scope>test</scope>
-        </dependency>
         <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-dependency-plugin -->
-
     </dependencies>
 
     <build>

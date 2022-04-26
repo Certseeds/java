@@ -116,7 +116,7 @@ public class Launcher {
         String[] names = {"filename", "source", "field", "date"};
         ArrayList<String> input_csv = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(
-                new InputStreamReader(new FileInputStream(inputCsvPath)))) {
+                new InputStreamReader(new FileInputStream(inputCsvPath),StandardCharsets.UTF_8))) {
             header = br.readLine().split(",");
             for (int j = 0; j < names.length; j++) {
                 for (int i = 0; i < header.length; i++) {
@@ -174,7 +174,7 @@ public class Launcher {
         }
         try {
             for (FileEntry entry : fileEntries) {
-                StringBuffer currentPath = new StringBuffer(newFolder.getPath() + File.separator);
+                final StringBuilder currentPath = new StringBuilder(newFolder.getPath() + File.separator);
                 // entry.setNewPath(currentPath);
                 // UnTODO choose it or the other one.
                 if (null != categorizeCriteriaList) {
@@ -182,15 +182,15 @@ public class Launcher {
                         currentPath.append(cc.toCategoryKey(entry) + File.separator);
                     }
                 }
-                File folder = new File(currentPath.toString());
+                final File folder = new File(currentPath.toString());
                 if (!folder.exists()) {
                     folder.mkdirs();
                 }
-                String file_name = entry.getFile().getName();
+                final String file_name = entry.getFile().getName();
                 if (!file_name.contains(".")) {
                     currentPath.append(prefix).append(file_name).append(postfix);
                 } else {
-                    String[] pair = file_name.split("\\.");
+                    final String[] pair = file_name.split("\\.");
                     currentPath.append(prefix).append(pair[0]).append(postfix).append(".").append(pair[1]);
                 }
                 entry.setNewPath(currentPath.toString());
@@ -200,8 +200,8 @@ public class Launcher {
                 // hint: use a for-each structure with categorizeCriteriaList
                 // hint: check out the toCategoryKey method in CategorizeCriteria,
                 // as it might be useful for your code
-                File write_file = new File(currentPath.toString());
-                StringBuilder contest = new StringBuilder();
+                final File write_file = new File(currentPath.toString());
+                final StringBuilder contest = new StringBuilder();
                 try (BufferedReader test_br = new BufferedReader(
                         new InputStreamReader(
                                 new FileInputStream(entry.getFile()), entry.getEncoding()))) {

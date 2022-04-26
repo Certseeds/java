@@ -2,6 +2,7 @@ import jxl.Workbook;
 import jxl.write.Label;
 import jxl.write.WritableSheet;
 import jxl.write.WritableWorkbook;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -9,6 +10,9 @@ import java.io.File;
 import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.Random;
+
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 public class TestSortRunningTimeSurvey {
@@ -325,5 +329,76 @@ public class TestSortRunningTimeSurvey {
             swap_sort(list, son_max, index);
             heapSort_headpify(list, son_max, length);
         }
+    }
+
+    public static final class innerTest {
+        private static final int[] data = {3, 5, 3, 0, 8, 6, 1, 5, 8, 6, 2, 4, 9, 4, 7, 0, 1, 8, 9, 7, 3, 1, 2, 5, 9, 7, 4, 0, 2, 6};
+        int[] nums = new int[data.length];
+        int[] zeros = new int[data.length];
+        //int[] results = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        int[] results = new int[data.length];
+
+        @BeforeEach
+        public void before_operas() {
+            nums = new int[data.length];
+            zeros = new int[data.length];
+            results = new int[data.length];
+            System.arraycopy(data, 0, nums, 0, data.length);
+            System.arraycopy(data, 0, results, 0, nums.length);
+            Arrays.sort(results);
+        }
+
+        @Test
+        public void test_get_big_numbers() {
+            int count = 1;
+            for (int i = 0; i <= 10; i++) {
+                assertEquals(count, get_numbers(i));
+                count *= 10;
+            }
+            assertEquals(100000001, get_numbers(8) + 1);
+        }
+
+        @Test
+        public void test_insertsort() {
+            insertionSort(nums.length - 1, nums);
+            System.out.println("test insert Sort");
+            assertArrayEquals(results, nums);
+        }
+
+        @Test
+        public void test_bubblesort() {
+            bubbleSort(nums.length - 1, nums);
+            System.out.println("test bubble Sort");
+            assertArrayEquals(results, nums);
+        }
+
+        @Test
+        public void test_selectionsort() {
+            selectionSort(nums.length - 1, nums);
+            System.out.println("test selection Sort");
+            assertArrayEquals(results, nums);
+        }
+
+        @Test
+        public void test_quicksort_rec() {
+            quickSort_rec(nums, 0, nums.length - 1);
+            System.out.println("test quicksort Sort");
+            assertArrayEquals(results, nums);
+        }
+
+        @Test
+        public void test_mergesort_rec() {
+            mergesort_rec(nums, zeros, 0, nums.length - 1);
+            System.out.println("test merge Sort");
+            assertArrayEquals(results, nums);
+        }
+
+        @Test
+        public void test_heapsort_rec() {
+            heapSort(nums.length - 1, nums);
+            System.out.println("test merge Sort");
+            assertArrayEquals(results, nums);
+        }
+
     }
 }

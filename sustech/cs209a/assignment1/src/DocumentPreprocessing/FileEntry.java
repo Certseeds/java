@@ -29,7 +29,7 @@ public class FileEntry {
     }
 
     public String toSummaryString() {
-        DateTimeFormatter outputFormat = DateTimeFormatter.ofPattern("yyyyMMdd");
+        final DateTimeFormatter outputFormat = DateTimeFormatter.ofPattern("yyyyMMdd");
         return newPath + "," + source + "," + field + "," + outputFormat.format(date) + "," + length + "," + encoding;
     }
 

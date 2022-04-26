@@ -17,5 +17,13 @@
         <module>assignment1</module>
         <module>week01</module>
         <module>week02</module>
+        <module>week03</module>
     </modules>
+    <dependencies>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 </project>
