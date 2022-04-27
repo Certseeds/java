@@ -23,7 +23,7 @@ public class CodeBreaker{
         } catch (FileAlreadyExistsException fee) {
             return (fee.getMessage() + " is a folder and it exist");
         } catch (FileNotFoundException ffe) {
-            return (String.format("%s do not exist", args[0]));
+            return "%s do not exist".formatted(args[0]);
         } catch (IOException e) {
             return ("unknown IO exception" + Arrays.toString(e.getStackTrace()));
         }
@@ -43,7 +43,7 @@ public class CodeBreaker{
     }
 
     public static StringBuilder readFile(String path) throws IOException {
-        File file = new File(path);
+        final File file = new File(path);
         if (!file.exists()) {
             throw new FileNotFoundException();
         } else if (file.exists() && file.isDirectory()) {

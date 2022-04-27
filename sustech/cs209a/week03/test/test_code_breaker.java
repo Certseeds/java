@@ -46,7 +46,7 @@ public class test_code_breaker {
 
     @Test
     public void test_argument_number_1() {
-        String[] arrat = {path_true, path_dir, path_false, path_unsupport};
+        final String[] arrat = {path_true, path_dir, path_false, path_unsupport};
         assertThrows(IllegalArgumentException.class, () -> {
             CodeBreaker.breaker(arrat);
         });
@@ -54,14 +54,14 @@ public class test_code_breaker {
 
     @Test
     public void test_main_true() {
-        String[] arr = {path_true};
+        final String[] arr = {path_true};
         CodeBreaker.main(arr);
         assertEquals(";48\r\n", outContent.toString());
     }
 
     @Test
     public void test_main_not_exist() {
-        String[] arr = {path_false};
+        final String[] arr = {path_false};
         CodeBreaker.main(arr);
         assertEquals(
                 String.format("%s do not exist\r\n", arr[0]),
@@ -70,7 +70,7 @@ public class test_code_breaker {
 
     @Test
     public void test_main_already_exist() {
-        String[] arr = {path_dir};
+        final String[] arr = {path_dir};
         CodeBreaker.main(arr);
         assertEquals(
                 String.format("%s is a folder and it exist\r\n", arr[0]),
