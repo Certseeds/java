@@ -1,23 +1,19 @@
 import org.junit.jupiter.api.Test;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
+import java.io.*;
 
-public class TestBufferReader {
-    private static final String file_path = "sample.txt";
+public class TestStreamReader {
+
     @Test
-    public void testBufferReader() {
-        try (FileInputStream fis = new FileInputStream(file_path);
-             InputStreamReader isr = new InputStreamReader(fis, "gb18030");
-             BufferedReader bReader = new BufferedReader(isr);) {
+    public void testStreamReader() {
+        try (InputStreamReader isr = new InputStreamReader(new FileInputStream("test_resources/sample.txt"), "gb18030")) {
+
             char[] cbuf = new char[65535];
-            int file_len = bReader.read(cbuf);
+            int file_len = isr.read(cbuf);
+
             System.out.println(file_len);
             System.out.println(cbuf);
+
         } catch (FileNotFoundException e) {
             System.out.println("The pathname does not exist.");
             e.printStackTrace();

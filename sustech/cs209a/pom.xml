@@ -13,12 +13,16 @@
         <artifactId>sustech</artifactId>
         <version>${revision}</version>
     </parent>
+    <properties>
+        <javafx.version>17.0.2</javafx.version>
+    </properties>
     <modules>
         <module>assignment1</module>
         <module>week01</module>
         <module>week02</module>
         <module>week03</module>
         <module>week04</module>
+        <module>week05</module>
     </modules>
     <dependencies>
         <dependency>

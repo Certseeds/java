@@ -15,6 +15,12 @@
     <name>nanoseeds.sustech.cs209a.cs209a_2020S_week01</name>
     <description>2020Spring's cs209a week01</description>
     <build>
-        <testSourceDirectory>${project.basedir}</testSourceDirectory>
+        <testSourceDirectory>${project.basedir}/test</testSourceDirectory>
+        <sourceDirectory>${project.basedir}/src</sourceDirectory>
+        <testResources>
+            <testResource>
+                <directory>${project.basedir}/test_resources</directory>
+            </testResource>
+        </testResources>
     </build>
 </project>

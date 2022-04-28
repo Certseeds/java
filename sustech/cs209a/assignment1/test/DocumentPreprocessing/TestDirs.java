@@ -5,14 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 
-/**
- * @Github: https://github.com/Certseeds
- * @Organization: SUSTech
- * @Author: nanoseeds
- * @Date: 2020-03-11 14:22:16
- * @LastEditors : nanoseeds
- * @LastEditTime : 2020-03-11 14:22:16
- */
+
 public class TestDirs {
     @Test
     public void test_files() {

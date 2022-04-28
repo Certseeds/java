@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<VBox xmlns:fx="http://javafx.com/fxml/1" alignment="CENTER" prefHeight="400.0" prefWidth="600.0" spacing="8.0"
+      xmlns="http://javafx.com/javafx/8" fx:controller="week05.MainUIfxml">
+    <padding>
+        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+    </padding>
+    <children>
+        <Label text="Click the button to register " textFill="#3e3d85">
+            <font>
+                <Font size="31.0"/>
+            </font>
+        </Label>
+        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../pictures/Snipaste_2020-03-17_22-07-01.png"/>
+            </image>
+        </ImageView>
+        <Button fx:id="myButton" mnemonicParsing="false" onDragEntered="#moveWindow" onMouseEntered="#moveWindow"
+                text="Click to Run" textFill="#752067">
+            <font>
+                <Font size="30.0"/>
+            </font>
+        </Button>
+
+    </children>
+</VBox>

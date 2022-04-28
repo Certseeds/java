@@ -5,7 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class TestByteReader {
-    static final String file_path = "sample.txt";
+    static final String file_path = "test_resources/sample.txt";
 
     @Test
     public void testByteReader() {
