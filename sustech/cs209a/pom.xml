@@ -23,6 +23,8 @@
         <module>week03</module>
         <module>week04</module>
         <module>week05</module>
+        <module>week06</module>
+        <module>week07</module>
     </modules>
     <dependencies>
         <dependency>
