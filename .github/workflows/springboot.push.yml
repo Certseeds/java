@@ -20,6 +20,12 @@ jobs:
         working-directory: ./springboot
     steps:
       - uses: actions/checkout@v3
+      - name: update mvn files
+        run: |
+          mkdir temp
+          cd temp
+          touch pom.xml
+          echo "<!-- ${{ matrix.java_v }} ${{ matrix.os }} springboot -->" > pom.xml
       - name: Set up JDK
         uses: actions/setup-java@v3
         with:
