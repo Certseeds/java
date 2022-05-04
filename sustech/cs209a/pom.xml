@@ -32,6 +32,7 @@
         <module>week12</module>
         <module>week13</module>
         <module>week14</module>
+        <module>address_app</module>
     </modules>
     <dependencies>
         <dependency>
