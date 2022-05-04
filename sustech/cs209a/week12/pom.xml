@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>nanoseeds.sustech</groupId>
+        <artifactId>cs209a</artifactId>
+        <version>${revision}</version>
+    </parent>
+
+    <groupId>nanoseeds.sustech.cs209a</groupId>
+    <artifactId>cs209a_2020S_week12</artifactId>
+    <version>${revision}</version>
+    <name>nanoseeds.sustech.cs209a.cs209a_2020S_week12</name>
+    <description>2020Spring's cs209a week12</description>
+    <build>
+        <sourceDirectory>${project.basedir}/src</sourceDirectory>
+        <testSourceDirectory>${project.basedir}/test</testSourceDirectory>
+    </build>
+    <dependencies>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-base</artifactId>
+            <version>${javafx.version}</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
+</project>
