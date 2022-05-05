@@ -174,12 +174,13 @@ public class Launcher {
         }
         try {
             for (FileEntry entry : fileEntries) {
+                System.out.println(entry.toString());
                 final StringBuilder currentPath = new StringBuilder(newFolder.getPath() + File.separator);
                 // entry.setNewPath(currentPath);
                 // UnTODO choose it or the other one.
                 if (null != categorizeCriteriaList) {
                     for (CategorizeCriteria cc : categorizeCriteriaList) {
-                        currentPath.append(cc.toCategoryKey(entry) + File.separator);
+                        currentPath.append(cc.toCategoryKey(entry)).append(File.separator);
                     }
                 }
                 final File folder = new File(currentPath.toString());

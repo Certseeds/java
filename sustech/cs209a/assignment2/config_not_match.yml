@@ -1,0 +1,12 @@
+Root: test_data2
+Intervals:
+  - 114
+  - 514
+  - 1919
+  - 810
+  - 893
+IntervalNames:
+  - small
+  - mid
+  - big
+  - giant

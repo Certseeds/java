@@ -1,0 +1,10 @@
+Root: test_datas
+Intervals:
+  - 100
+  - 2000
+  - 4000
+IntervalNames:
+  - small
+  - mid
+  - big
+  - giant

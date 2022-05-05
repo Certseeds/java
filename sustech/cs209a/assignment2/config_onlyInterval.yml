@@ -1,0 +1,9 @@
+Intervals:
+  - 200
+  - 500
+  - 2000
+IntervalNames:
+  - small
+  - mid
+  - big
+  - giant

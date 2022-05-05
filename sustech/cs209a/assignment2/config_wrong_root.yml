@@ -1,0 +1,10 @@
+Root: Wrong
+Intervals:
+  - 114
+  - 514
+  - 1919
+IntervalNames:
+  - small
+  - mid
+  - big
+  - giant
