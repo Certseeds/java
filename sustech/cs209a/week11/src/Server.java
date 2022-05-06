@@ -20,7 +20,9 @@ public class Server {
     static Connection con = null;
 
     public static void main(String[] args) throws IOException {
-        final String db_path2 = File.createTempFile("StudentDB", ".sqlite").getAbsolutePath();
+        final File tempFile = File.createTempFile("StudentDB", ".sqlite");
+        tempFile.deleteOnExit();
+        final String db_path2 = tempFile.getAbsolutePath();
         System.out.println(db_path2);
         openDB(db_path2);
         create_table();
