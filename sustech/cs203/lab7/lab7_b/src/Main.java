@@ -6,7 +6,7 @@ public class Main {
     static InputReader in;
     static int count = 1;
 
-    public static void main(String args[]) throws IOException {
+    public static void main(String []args){
         out = new PrintWriter(System.out);
         in = new InputReader(System.in);
         int count = in.nextInt();
@@ -30,7 +30,7 @@ public class Main {
                 fathers[i] = in.nextInt();
                 sons[i] = in.nextInt();
             }
-            a1: for (int i = 1; i < numbers; i++) {
+            for (int i = 1; i < numbers; i++) {
                 int beginNumber = fathers[i];
                 int finalNumber = sons[i];
                 isFather[finalNumber] = false;
@@ -42,13 +42,13 @@ public class Main {
                         Tree[beginNumber].rightson = Tree[finalNumber];
                     } else {
                         isBST = false;
-                        break a1;
+                        break;
                     }
                 }
                 // havew double sons cases
                 else if (Tree[beginNumber].leftson.Value != 0 && Tree[beginNumber].rightson.Value != 0) {
                     isBST = false;
-                    break a1;
+                    break;
                 }
                 // justLeftson
                 else if (Tree[beginNumber].leftson.Value != 0 && Tree[beginNumber].rightson.Value == 0) {
@@ -56,7 +56,7 @@ public class Main {
                         Tree[beginNumber].rightson = Tree[finalNumber];
                     } else {
                         isBST = false;
-                        break a1;
+                        break;
                     }
                 }
                 // justRightson
@@ -65,7 +65,7 @@ public class Main {
                         Tree[beginNumber].leftson = Tree[finalNumber];
                     } else {
                         isBST = false;
-                        break a1;
+                        break;
                     }
                 }
             }
@@ -114,7 +114,7 @@ public class Main {
         out.close();
     }
 
-    static class Node {
+    private static final class Node {
         int Value;
         Node leftson;
         Node rightson;
@@ -131,39 +131,15 @@ public class Main {
         }
 
     }
-}
 
-class InputReader {
+private static final class InputReader {
     public BufferedReader br;
     public StringTokenizer tokenizer;
 
-    public InputReader(InputStream stream) throws FileNotFoundException {
+    public InputReader(InputStream stream){
         br = new BufferedReader(new InputStreamReader(stream), 327680);
         tokenizer = null;
     }
-
-    public boolean hasNext() {
-        while (tokenizer == null || !tokenizer.hasMoreElements()) {
-            try {
-                tokenizer = new StringTokenizer(br.readLine());
-            } catch (Exception e) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    public String next() {
-        while (tokenizer == null || !tokenizer.hasMoreTokens()) {
-            try {
-                tokenizer = new StringTokenizer(br.readLine());
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        }
-        return tokenizer.nextToken();
-    }
-
     public int nextInt() {
         try {
             int c = br.read();
@@ -186,26 +162,4 @@ class InputReader {
         }
     }
 
-    public long nextLong() {
-        try {
-            int c = br.read();
-            while (c <= 32) {
-                c = br.read();
-            }
-            boolean negative = false;
-            if (c == '-') {
-                negative = true;
-                c = br.read();
-            }
-            long x = 0;
-            while (c > 32) {
-                x = x * 10 + c - '0';
-                c = br.read();
-            }
-            return negative ? -x : x;
-        } catch (IOException e) {
-            return -1;
-        }
-    }
-
-}
+}}

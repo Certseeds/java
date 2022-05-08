@@ -5,14 +5,9 @@ public class Main {
     static PrintWriter out;
     static InputReader in;
 
-    public static void main(String args[]) throws IOException {
+    public static void main(String []args){
         out = new PrintWriter(System.out);
         in = new InputReader(System.in);
-//        System.out.println("Hello World");
-//        Node testcase = new Node(2);
-//        System.out.println(testcase.Value);
-//        System.out.println(testcase.leftson.Value);
-//        System.out.println(testcase.rightson.Value);
         for (int t = in.nextInt(); t > 0; t--) { // As same as scanner.nextInt()
             int numbers = in.nextInt();
             Node[] nodelist = new Node[numbers + 1];
@@ -38,18 +33,17 @@ public class Main {
                     fatherNumber = i;
                 }
             }
-            //out.println(fatherNumber);
             boolean printOut = true;
             boolean beginLeave = false;
             if (hasFather && !isNull(nodelist[fatherNumber])) {
                 Queue<Node> NodeQueue = new LinkedList<Node>();
                 NodeQueue.add(nodelist[fatherNumber]);
-                a1: while (!NodeQueue.isEmpty()) {
+                while (!NodeQueue.isEmpty()) {
                     Node useNode = NodeQueue.poll();
                     if (beginLeave) {
                         if (!isNull(useNode)) {
                             printOut = false;
-                            break a1;
+                            break;
                         }
                     }
                     if (useNode.leftson.Value != 0) {
@@ -62,7 +56,7 @@ public class Main {
 
                     } else if (useNode.rightson.Value != 0) {
                         printOut = false;
-                        break a1;
+                        break;
                     } else {
                         beginLeave = true;
                     }
@@ -85,17 +79,12 @@ public class Main {
     }
 
     static boolean isNull(Node node) {
-        if (node.leftson.Value == 0 && node.rightson.Value == 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return node.leftson.Value == 0 && node.rightson.Value == 0;
     }
 
-    static class Node {
+    private static final class Node {
         int Value;
-        Node leftson;
-        Node rightson;
+        Node leftson,rightson;
 
         public Node() {
             this.Value = 0;
@@ -109,37 +98,14 @@ public class Main {
         }
 
     }
-}
 
-class InputReader {
+private static final class InputReader {
     public BufferedReader br;
     public StringTokenizer tokenizer;
 
-    public InputReader(InputStream stream) throws FileNotFoundException {
+    public InputReader(InputStream stream){
         br = new BufferedReader(new InputStreamReader(stream), 327680);
         tokenizer = null;
-    }
-
-    public boolean hasNext() {
-        while (tokenizer == null || !tokenizer.hasMoreElements()) {
-            try {
-                tokenizer = new StringTokenizer(br.readLine());
-            } catch (Exception e) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    public String next() {
-        while (tokenizer == null || !tokenizer.hasMoreTokens()) {
-            try {
-                tokenizer = new StringTokenizer(br.readLine());
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        }
-        return tokenizer.nextToken();
     }
 
     public int nextInt() {
@@ -163,27 +129,4 @@ class InputReader {
             return -1;
         }
     }
-
-    public long nextLong() {
-        try {
-            int c = br.read();
-            while (c <= 32) {
-                c = br.read();
-            }
-            boolean negative = false;
-            if (c == '-') {
-                negative = true;
-                c = br.read();
-            }
-            long x = 0;
-            while (c > 32) {
-                x = x * 10 + c - '0';
-                c = br.read();
-            }
-            return negative ? -x : x;
-        } catch (IOException e) {
-            return -1;
-        }
-    }
-
-}
+}}
