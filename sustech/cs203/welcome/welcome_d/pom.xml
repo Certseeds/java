@@ -11,7 +11,7 @@
     <groupId>nanoseeds.sustech.cs203.cs203_2018Fall_welcome</groupId>
     <artifactId>cs203_2018Fall_welcome_D</artifactId>
     <version>${revision}</version>
-    <name>nanoseeds.sustech.cs203.cs203_2019F_welcome_D</name>
+    <name>nanoseeds.sustech.cs203.cs203_2018F_welcome_D</name>
     <description>2018Fall's cs203 welcome_D</description>
     <build>
         <sourceDirectory>${project.basedir}/src</sourceDirectory>

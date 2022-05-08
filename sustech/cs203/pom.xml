@@ -21,5 +21,6 @@
     <inceptionYear>2018</inceptionYear>
     <modules>
         <module>welcome</module>
+        <module>lab2</module>
     </modules>
 </project>

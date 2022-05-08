@@ -10,17 +10,17 @@
     </parent>
     <packaging>pom</packaging>
     <groupId>nanoseeds.sustech.cs203</groupId>
-    <artifactId>cs203_2018Fall_welcome</artifactId>
+    <artifactId>cs203_2018Fall_lab2</artifactId>
     <version>${revision}</version>
-    <name>nanoseeds.sustech.cs203.cs203_2018F_welcome</name>
-    <description>2018Fall's cs203 welcome</description>
+    <name>nanoseeds.sustech.cs203.cs203_2018F_lab2</name>
+    <description>2018Fall's cs203 lab2</description>
     <modules>
-        <module>welcome_a</module>
-        <module>welcome_b</module>
-        <module>welcome_c</module>
-        <module>welcome_d</module>
-        <module>welcome_e</module>
-        <module>welcome_f</module>
-        <module>welcome_g</module>
+        <module>lab2_a</module>
+        <module>lab2_b</module>
+        <module>lab2_c</module>
+        <module>lab2_d</module>
+        <module>lab2_e</module>
+        <module>lab2_f</module>
+        <module>lab2_g</module>
     </modules>
 </project>

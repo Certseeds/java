@@ -5,14 +5,14 @@
 
     <parent>
         <groupId>nanoseeds.sustech.cs203</groupId>
-        <artifactId>cs203_2018Fall_welcome</artifactId>
+        <artifactId>cs203_2018Fall_lab2</artifactId>
         <version>${revision}</version>
     </parent>
-    <groupId>nanoseeds.sustech.cs203.cs203_2018Fall_welcome</groupId>
-    <artifactId>cs203_2018Fall_welcome_E</artifactId>
+    <groupId>nanoseeds.sustech.cs203.cs203_2018Fall_lab2</groupId>
+    <artifactId>cs203_2018Fall_lab2_D</artifactId>
     <version>${revision}</version>
-    <name>nanoseeds.sustech.cs203.cs203_2018F_welcome_E</name>
-    <description>2018Fall's cs203 welcome_E</description>
+    <name>nanoseeds.sustech.cs203.cs203_2018F_lab2_D</name>
+    <description>2018Fall's cs203 lab2_D</description>
     <build>
         <sourceDirectory>${project.basedir}/src</sourceDirectory>
     </build>
