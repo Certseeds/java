@@ -15,13 +15,13 @@ public class Main {
             String temp = in.next();
             int length = temp.length();
             //int[] number = new int[length];
-            LinkedList<Integer> numberList = new LinkedList<Integer>();
+            LinkedList<Integer> numberList = new LinkedList<>();
             for (int i = 0; i < length; i++) {
                 //number[i] = (int) temp.charAt(i) - 64;
                 numberList.add((int) temp.charAt(i) - 64);
             }
-            LinkedList<Integer> costomerList = new LinkedList<Integer>();
-            LinkedList<Integer> removeList = new LinkedList<Integer>();
+            LinkedList<Integer> costomerList = new LinkedList<>();
+            LinkedList<Integer> removeList = new LinkedList<>();
             for (int i = 0; i < length; i++) {
                 boolean temp2 = false;
                 int temp3 = numberList.getFirst();

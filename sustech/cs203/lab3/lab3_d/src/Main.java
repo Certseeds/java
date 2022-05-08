@@ -29,8 +29,8 @@ public class Main {
                     poly1[i + 1][1] += poly1[i][1];
                 }
             }
-            LinkedList<Integer> linked1 = new LinkedList<Integer>();
-            LinkedList<Integer> linked2 = new LinkedList<Integer>();
+            LinkedList<Integer> linked1 = new LinkedList<>();
+            LinkedList<Integer> linked2 = new LinkedList<>();
             for (int i = 0; i < time1; i++) {
                 linked1.addLast(poly1[i][0]);
                 linked2.addLast(poly1[i][1]);

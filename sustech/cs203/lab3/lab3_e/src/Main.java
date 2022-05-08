@@ -13,7 +13,7 @@ public class Main {
             int planetNumber = in.nextInt();
             int destoryConstant = in.nextInt();
             int earthindex = in.nextInt();
-            LinkedList<Integer> planetList = new LinkedList<Integer>();
+            LinkedList<Integer> planetList = new LinkedList<>();
             for (int i = 0; i < earthindex; i++) {
                 planetList.add(1);
             }
@@ -35,7 +35,7 @@ public class Main {
     }
 
     public static LinkedList<Integer> transfer(LinkedList<Integer> linked1, int orderNumber) {
-        LinkedList<Integer> linked2 = new LinkedList<Integer>();
+        LinkedList<Integer> linked2 = new LinkedList<>();
         int length1 = linked1.size();
         for (int i = orderNumber; i < length1; i++) {
             linked2.add(linked1.get(i));

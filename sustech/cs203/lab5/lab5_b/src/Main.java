@@ -28,8 +28,6 @@ public class Main {
                 } else {
 
                     String[] temp = basic.split("\\*");
-                    //out.println(temp[0]);
-                    //out.println(temp[1]);
                     String halfBasic = temp[0];
                     String halfBasicTwo = temp[1];
                     int firstAppear = Search.indexOf(halfBasic);

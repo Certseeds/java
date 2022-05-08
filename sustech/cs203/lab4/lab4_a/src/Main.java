@@ -11,7 +11,7 @@ public class Main {
         out = new PrintWriter(System.out);
         in = new InputReader(System.in);
         for (int t = in.nextInt(); t > 0; t--) { //As same as scanner.nextInt()
-            Stack<String> lanran = new Stack<String>();
+            Stack<String> lanran = new Stack<>();
             String temp = in.next();
             String[] temp2 = temp.split("");
             int size = 1;
