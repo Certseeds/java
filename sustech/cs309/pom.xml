@@ -13,6 +13,7 @@
         <artifactId>sustech</artifactId>
         <version>${revision}</version>
     </parent>
+    <inceptionYear>2020</inceptionYear>
     <modules>
         <module>assignment3</module>
         <module>assignment4</module>

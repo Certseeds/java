@@ -4,9 +4,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>nanoseeds.sustech</groupId>
-    <artifactId>cs209a</artifactId>
-    <name>nanoseeds.sustech.cs209a</name>
-    <description>cs209a-java2-2020f</description>
+    <artifactId>cs208</artifactId>
+    <name>nanoseeds.sustech.cs208</name>
+    <description>cs208-java2-2019spring</description>
     <packaging>pom</packaging>
     <parent>
         <groupId>nanoseeds</groupId>
@@ -14,28 +14,14 @@
         <version>${revision}</version>
     </parent>
     <properties>
-        <javafx.version>17.0.2</javafx.version>
+        <java.version>11</java.version>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
     </properties>
-    <inceptionYear>2020</inceptionYear>
+    <inceptionYear>2019</inceptionYear>
     <modules>
-        <module>assignment1</module>
-        <module>assignment2</module>
-        <module>project</module>
-        <module>week01</module>
-        <module>week02</module>
-        <module>week03</module>
         <module>week04</module>
-        <module>week05</module>
-        <module>week06</module>
-        <module>week07</module>
-        <module>week08</module>
-        <module>week09</module>
         <module>week10</module>
-        <module>week11</module>
-        <module>week12</module>
-        <module>week13</module>
-        <module>week14</module>
-        <module>address_app</module>
     </modules>
     <dependencies>
         <dependency>

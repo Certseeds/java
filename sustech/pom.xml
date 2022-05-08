@@ -15,7 +15,8 @@
         <version>${revision}</version>
     </parent>
     <modules>
-        <module>cs309</module>
+        <module>cs208</module>
         <module>cs209a</module>
+        <module>cs309</module>
     </modules>
 </project>
