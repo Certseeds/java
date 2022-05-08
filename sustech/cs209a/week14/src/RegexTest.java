@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 
 //Online regex test website: https://regex101.com
 public class RegexTest {
-    public static void main(String args[]) {
+    public static void main(String []args) {
         String searchString = "", searchPattern = "";
         if (args.length == 2) {
             searchPattern = args[0];
