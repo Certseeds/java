@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>nanoseeds.sustech</groupId>
+        <artifactId>cs203</artifactId>
+        <version>${revision}</version>
+    </parent>
+    <packaging>pom</packaging>
+    <groupId>nanoseeds.sustech.cs203</groupId>
+    <artifactId>cs203_2018Fall_lab7</artifactId>
+    <version>${revision}</version>
+    <name>nanoseeds.sustech.cs203.cs203_2018F_lab7</name>
+    <description>2018Fall's cs203 lab7</description>
+    <modules>
+        <module>lab7_a</module>
+        <module>lab7_b</module>
+        <module>lab7_c</module>
+        <module>lab7_d</module>
+        <module>lab7_e</module>
+        <module>lab7_f</module>
+    </modules>
+</project>
