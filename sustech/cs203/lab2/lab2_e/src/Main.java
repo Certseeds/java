@@ -1,26 +1,36 @@
 import java.io.*;
-import java.math.*;
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-
-
 public class Main {
     public static void main(String[] args) {
-        InputStream inputStream = System.in;
-        OutputStream outputStream = System.out;
-        InputReader in = new InputReader(inputStream);
-        PrintWriter out = new PrintWriter(outputStream);
-        Task solver = new Task();
+        final InputStream inputStream = System.in;
+        final OutputStream outputStream = System.out;
+        final InputReader in = new InputReader(inputStream);
+        final PrintWriter out = new PrintWriter(outputStream);
+        final Task solver = new Task();
         solver.solve(in, out);
         out.close();
     }
 
-    static class Task {
+    public static int judgement(long[] diffArray, int runersNumber, long middle) {
+        long tempLength = 0;
+        int calcales = 0;
+        for (long l : diffArray) {
+            if (tempLength + l > middle) {
+                tempLength = l;
+                calcales++;
+            } else {
+                tempLength += l;
+            }
+        }
+        return calcales <= runersNumber - 2 ? -1 : 1;
+    }
+
+    private static final class Task {
         public void solve(InputReader in, PrintWriter out) {
             boolean judge = in.hasNext();
             while (judge) {
@@ -31,20 +41,17 @@ public class Main {
                 runerNumber += 1;
                 for (int i = 0; i < stopNumber; i++) {
                     stopArray[i] = in.nextInt();
-                    //System.out.println(stopArray[i]);
                 }
                 stopArray[stopNumber] = lengthOfRun;
                 Arrays.sort(stopArray);
                 long[] diffArray = new long[stopNumber + 2];
                 diffArray[0] = stopArray[0];
-                //diffArray[stopNumber] = lengthOfRun;
                 diffArray[stopNumber + 1] = 0;
                 long max = 0;
                 for (int i = 1; i < stopNumber + 1; i++) {
                     diffArray[i] = stopArray[i] - stopArray[i - 1];
-                    max = max > diffArray[i] ? max : diffArray[i];
+                    max = Math.max(max, diffArray[i]);
                 }
-                // get the diff array and the number m
                 long begin = max;
                 long finalNumber = lengthOfRun;
                 long middle = 0;
@@ -52,26 +59,22 @@ public class Main {
                     middle = begin + (finalNumber - begin) / 2;
                     if (judgement(diffArray, runerNumber, middle) == -1) {
                         finalNumber = middle - 1;
-                        //System.out.println("up");
                     } else {
                         begin = middle + 1;
-                        //System.out.println("down");
                     }
                 }
                 judge = in.hasNext();
-                //st = new StringTokenizer(temp);
                 if (judge) {
                     System.out.println(begin);
                 } else {
                     System.out.print(begin);
-                    //break;
                 }
             }
         }
 
     }
 
-    static class InputReader {
+    private static final class InputReader {
         public BufferedReader reader;
         public StringTokenizer tokenizer;
 
@@ -94,26 +97,6 @@ public class Main {
         public int nextInt() {
             return Integer.parseInt(next());
         }
-
-        public long nextLong() {
-            return Long.parseLong(next());
-        }
-
-        public double nextDouble() {
-            return Double.parseDouble(next());
-        }
-
-        public char[] nextCharArray() {
-            return next().toCharArray();
-        }
-
-        //         public boolean hasNext() {
-//             try {
-//                 return reader.ready();
-//             } catch(IOException e) {
-//                 throw new RuntimeException(e);
-//             }
-//         }
         public boolean hasNext() {
             try {
                 String string = reader.readLine();
@@ -126,29 +109,6 @@ public class Main {
                 return false;
             }
         }
-
-        public BigInteger nextBigInteger() {
-            return new BigInteger(next());
-        }
-
-        public BigDecimal nextBigDecinal() {
-            return new BigDecimal(next());
-        }
-    }
-
-    public static int judgement(long[] diffArray, int runersNumber, long middle) {
-        int length = diffArray.length;
-        long tempLength = 0;
-        int calcales = 0;
-        for (int i = 0; i < length; i++) {
-            if (tempLength + diffArray[i] > middle) {
-                tempLength = diffArray[i];
-                calcales++;
-            } else {
-                tempLength += diffArray[i];
-            }
-        }
-        return calcales <= runersNumber - 2 ? -1 : 1;
     }
 
 }
