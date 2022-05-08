@@ -29,5 +29,6 @@
         <module>bonus</module>
         <module>lab7</module>
         <module>lab8</module>
+        <module>lab9</module>
     </modules>
 </project>
