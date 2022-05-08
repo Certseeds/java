@@ -58,7 +58,7 @@ public class Main {
 
     }
 
-    public static int Judgement(int difflength, long [][]Order, int value, long[] realArray) {
+    public static int Judgement(int difflength, long[][] Order, int value, long[] realArray) {
         long[] diffArray2 = new long[difflength];
         for (int i = 0; i < difflength; i++) {
             diffArray2[i] = 0;

@@ -1,6 +1,5 @@
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Stack;
 import java.util.StringTokenizer;
 
 class Main {
@@ -86,92 +85,19 @@ class Main {
         }
 
         void bulidEdge(int begin, int finalNumber, Integer quanzhong) {
-//            if (GraphLine[begin].children.contains(finalNumber)) {
-//                int index = GraphLine[begin].children.indexOf(finalNumber);
-//                int temp = this.GraphLine[begin].quanzhong.get(index);
-//                this.GraphLine[begin].quanzhong.set(index,(int)Math.max(temp, quanzhong));
-//            }
-//            else {
             this.GraphLine[begin].children.add(GraphLine[finalNumber]);
             this.GraphLine[finalNumber].children.add(GraphLine[begin]);
             this.GraphLine[begin].quanzhong.add(quanzhong);
             this.GraphLine[finalNumber].quanzhong.add(quanzhong);
-
-
-            //}
-        }
-
-        public void topoSort(int root, boolean[] visited, Stack<Integer> stack) {
-            visited[root] = true;
-            Stack<Integer> tempTopo = new Stack<>();
-            tempTopo.push(root);
-            while (tempTopo.size() != 0) {
-                int beginNumber = tempTopo.peek();
-                boolean needPop = true;
-                int count = 0;
-                ArrayList<Node> tempIn = this.GraphLine[beginNumber].children;
-                int finalNumber = tempIn.size();
-                a2:
-                while (count < finalNumber) {
-                    if (!visited[tempIn.get(count).Value]) {
-                        visited[tempIn.get(count).Value] = true;
-                        tempTopo.push(tempIn.get(count).Value);
-                        needPop = false;
-                        break a2;
-                    }
-                    count++;
-                }
-                if (needPop) {
-                    stack.push(tempTopo.pop());
-                }
-            }
-        }
-
-        public long longestPath(int begin) {
-            Stack<Integer> stack = new Stack<>();
-            long[] distance = new long[this.number + 1];
-            for (int i = 0; i < distance.length; i++) {
-                distance[i] = Integer.MIN_VALUE;
-            }
-            distance[begin] = 0;
-            boolean[] isvisited = new boolean[this.number + 1];
-            for (int i = 1; i < this.number + 1; i++) {
-                if (isvisited[i] == false) {
-                    topoSort(i, isvisited, stack);
-                }
-            }
-            //获取一个用stack存的
-
-            while (stack.size() != 0) {
-                int newRoot = stack.pop();
-                //  out.println(newRoot + "*");
-                if (distance[newRoot] != Integer.MIN_VALUE) {
-                    for (int i = 0; i < GraphLine[newRoot].children.size(); i++) {
-                        if (distance[GraphLine[newRoot].children.get(i).Value] < distance[GraphLine[newRoot].Value] + GraphLine[newRoot].quanzhong.get(i)) {
-                            distance[GraphLine[newRoot].children.get(i).Value] = distance[GraphLine[newRoot].Value] + GraphLine[newRoot].quanzhong.get(i);
-                        }
-                    }
-                }
-            }
-            long maxMium = 0;
-            for (int i = 1; i < distance.length; i++) {
-                maxMium = (long) Math.max(maxMium, distance[i]);
-            }
-            //out.println(Arrays.toString(distance));
-            //out.println(Arrays.toString(isvisited));
-            return maxMium;
-
         }
 
         private static final class Node {
             int Value;
-            ArrayList<Node> children;
-            ArrayList<Integer> quanzhong;
+            ArrayList<Node> children = new ArrayList<>();
+            ArrayList<Integer> quanzhong = new ArrayList<>();
 
             public Node(int value) {
                 this.Value = value;
-                children = new ArrayList<>();
-                quanzhong = new ArrayList<>();
             }
         }
     }
@@ -206,7 +132,5 @@ class Main {
                 return -1;
             }
         }
-
-
     }
 }

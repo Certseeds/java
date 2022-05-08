@@ -123,7 +123,7 @@ public class Main {
         out.close(); //Don't forget this line, otherwise you will output nothing. This sentence flush the buffer.
     }
 
-    public static int getMiddle(int [][]array, int begin, int finalNumber) {
+    public static int getMiddle(int[][] array, int begin, int finalNumber) {
         int temp = array[begin][0];
         int temp2 = array[begin][1];
         while (begin < finalNumber) {
@@ -147,7 +147,7 @@ public class Main {
         return begin;
     }
 
-    public static void quicksort(int [][]array, int begin, int finalNumber) {
+    public static void quicksort(int[][] array, int begin, int finalNumber) {
         int middle;
         if (begin < finalNumber) {
             middle = getMiddle(array, begin, finalNumber);

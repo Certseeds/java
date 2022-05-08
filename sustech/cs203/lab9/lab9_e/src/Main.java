@@ -122,15 +122,12 @@ class Main {
         private static final class Node {
             int Value;
             final Comparator<Node> sort = Comparator.comparingInt(a -> a.Value);
-            Queue<Node> fathers;
-            ArrayList<Node> children;
-            ArrayList<Integer> quanzhong;
+            Queue<Node> fathers = new PriorityQueue<>(13, sort);
+            ArrayList<Node> children = new ArrayList<>();
+            ArrayList<Integer> quanzhong = new ArrayList<>();
 
             public Node(int value) {
                 this.Value = value;
-                fathers = new PriorityQueue<>(13, sort);
-                children = new ArrayList<>();
-                quanzhong = new ArrayList<>();
             }
         }
     }

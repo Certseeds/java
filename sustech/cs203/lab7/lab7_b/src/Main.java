@@ -1,12 +1,14 @@
 import java.io.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Stack;
+import java.util.StringTokenizer;
 
 public class Main {
     static PrintWriter out;
     static InputReader in;
     static int count = 1;
 
-    public static void main(String []args){
+    public static void main(String[] args) {
         out = new PrintWriter(System.out);
         in = new InputReader(System.in);
         int count = in.nextInt();
@@ -93,7 +95,7 @@ public class Main {
                     int Max = 0;
                     for (int i = 0; i < order.size() - 1; i++) {
                         Max = Math.max(Max, order.get(i));
-                        if (Max>= order.get(i + 1)) {
+                        if (Max >= order.get(i + 1)) {
                             isBST = false;
                             break;
                         }
@@ -125,41 +127,42 @@ public class Main {
 
         public Node(int value) {
             this.Value = value;
-            // children = new ArrayList<>();
             leftson = new Node();
             rightson = new Node();
         }
 
     }
 
-private static final class InputReader {
-    public BufferedReader br;
-    public StringTokenizer tokenizer;
+    private static final class InputReader {
+        public BufferedReader br;
+        public StringTokenizer tokenizer;
 
-    public InputReader(InputStream stream){
-        br = new BufferedReader(new InputStreamReader(stream), 327680);
-        tokenizer = null;
-    }
-    public int nextInt() {
-        try {
-            int c = br.read();
-            while (c <= 32) {
-                c = br.read();
-            }
-            boolean negative = false;
-            if (c == '-') {
-                negative = true;
-                c = br.read();
-            }
-            int x = 0;
-            while (c > 32) {
-                x = x * 10 + c - '0';
-                c = br.read();
-            }
-            return negative ? -x : x;
-        } catch (IOException e) {
-            return -1;
+        public InputReader(InputStream stream) {
+            br = new BufferedReader(new InputStreamReader(stream), 327680);
+            tokenizer = null;
         }
-    }
 
-}}
+        public int nextInt() {
+            try {
+                int c = br.read();
+                while (c <= 32) {
+                    c = br.read();
+                }
+                boolean negative = false;
+                if (c == '-') {
+                    negative = true;
+                    c = br.read();
+                }
+                int x = 0;
+                while (c > 32) {
+                    x = x * 10 + c - '0';
+                    c = br.read();
+                }
+                return negative ? -x : x;
+            } catch (IOException e) {
+                return -1;
+            }
+        }
+
+    }
+}

@@ -154,6 +154,7 @@ public class Main {
             System.out.println(calcalusfinal);
         }
     }
+
     public static String tentoTwo(int a) {
         return Integer.toBinaryString(a);
     }

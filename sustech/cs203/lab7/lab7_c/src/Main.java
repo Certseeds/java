@@ -1,11 +1,13 @@
 import java.io.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Stack;
+import java.util.StringTokenizer;
 
 public class Main {
     static PrintWriter out;
     static InputReader in;
 
-    public static void main(String []args){
+    public static void main(String[] args) {
         out = new PrintWriter(System.out);
         in = new InputReader(System.in);
         int count = in.nextInt();
@@ -13,31 +15,31 @@ public class Main {
             int numbers = in.nextInt();
             boolean isAVL = true;
             boolean isBST = true;
-            Node[] Tree = new Node[numbers +1];
-            boolean[] isRoot = new boolean[numbers+1];
+            Node[] Tree = new Node[numbers + 1];
+            boolean[] isRoot = new boolean[numbers + 1];
             Tree[0] = new Node();
             isRoot[0] = false;
             for (int i = 1; i < numbers + 1; i++) {
                 Tree[i] = new Node(in.nextInt());
                 isRoot[i] = true;
             }
-            for (int i = 1; i < numbers +1; i++) {
+            for (int i = 1; i < numbers + 1; i++) {
                 int left = in.nextInt();
                 int right = in.nextInt();
                 isRoot[left] = false;
                 isRoot[right] = false;
-                Tree[i].leftson = left > 0 ? Tree[left]:new Node();
-                Tree[i].rightson = right > 0 ? Tree[right]:new Node();
+                Tree[i].leftson = left > 0 ? Tree[left] : new Node();
+                Tree[i].rightson = right > 0 ? Tree[right] : new Node();
             }
             int rootPosition = 0;
-             for (int i = 1; i < numbers+1; i++) {
+            for (int i = 1; i < numbers + 1; i++) {
                 if (isRoot[i]) {
                     rootPosition = i;
                     break;
                 }
             }
             ArrayList<Integer> order = new ArrayList<>();
-            if(rootPosition != 0) {
+            if (rootPosition != 0) {
                 //非递归中序遍历
                 Stack<Node> stack = new Stack<>();
                 Node root = Tree[rootPosition];
@@ -59,7 +61,7 @@ public class Main {
                     }
                 }
                 // 非递归中序遍历结束,BST判定结束
-                isAVL = getHeight(Tree[rootPosition]) != -1 ;
+                isAVL = getHeight(Tree[rootPosition]) != -1;
             }
 
             if (isAVL && isBST) {
@@ -72,6 +74,18 @@ public class Main {
             }
         }
         out.close();
+    }
+
+    static int getHeight(Node root) {
+        if (root.Value == 0) {
+            return 0;
+        }
+        int left = getHeight(root.leftson);
+        int right = getHeight(root.rightson);
+        if (left == -1 || right == -1) {
+            return -1;
+        }
+        return Math.abs(left - right) > 1 ? -1 : (1 + Math.max(left, right));
     }
 
     private static final class Node {
@@ -90,47 +104,37 @@ public class Main {
         }
 
     }
-    static int getHeight(Node root) {
-        if(root.Value == 0) {
-            return 0;
+
+    private static final class InputReader {
+        public BufferedReader br;
+        public StringTokenizer tokenizer;
+
+        public InputReader(InputStream stream) {
+            br = new BufferedReader(new InputStreamReader(stream), 327680);
+            tokenizer = null;
         }
-        int left = getHeight(root.leftson);
-        int right = getHeight(root.rightson);
-        if (left == -1 || right == -1) {
-            return -1;
+
+        public int nextInt() {
+            try {
+                int c = br.read();
+                while (c <= 32) {
+                    c = br.read();
+                }
+                boolean negative = false;
+                if (c == '-') {
+                    negative = true;
+                    c = br.read();
+                }
+                int x = 0;
+                while (c > 32) {
+                    x = x * 10 + c - '0';
+                    c = br.read();
+                }
+                return negative ? -x : x;
+            } catch (IOException e) {
+                return -1;
+            }
         }
-        return Math.abs(left-right)>1?-1:(1 + Math.max(left, right));
+
     }
-
-private static final class InputReader {
-    public BufferedReader br;
-    public StringTokenizer tokenizer;
-
-    public InputReader(InputStream stream){
-        br = new BufferedReader(new InputStreamReader(stream), 327680);
-        tokenizer = null;
-    }
-
-    public int nextInt() {
-        try {
-            int c = br.read();
-            while (c <= 32) {
-                c = br.read();
-            }
-            boolean negative = false;
-            if (c == '-') {
-                negative = true;
-                c = br.read();
-            }
-            int x = 0;
-            while (c > 32) {
-                x = x * 10 + c - '0';
-                c = br.read();
-            }
-            return negative ? -x : x;
-        } catch (IOException e) {
-            return -1;
-        }
-    }
-
-}}
+}

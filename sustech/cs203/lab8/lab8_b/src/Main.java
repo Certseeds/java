@@ -70,11 +70,10 @@ class Main {
 
         private static final class Node {
             int Value;
-            ArrayList<Node> children;
+            ArrayList<Node> children = new ArrayList<>();
 
             public Node(int value) {
                 this.Value = value;
-                children = new ArrayList<>();
             }
         }
     }

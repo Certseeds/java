@@ -105,13 +105,11 @@ public class Main {
 
         private static final class Node {
             public long value;
-            public Node leftChild;
-            public Node rightChild;
+            public Node leftChild = null;
+            public Node rightChild = null;
 
             public Node(long value) {
                 this.value = value;
-                leftChild = null;
-                rightChild = null;
             }
         }
     }

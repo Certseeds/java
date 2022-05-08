@@ -1,6 +1,4 @@
 import java.io.*;
-import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
@@ -97,6 +95,7 @@ public class Main {
         public int nextInt() {
             return Integer.parseInt(next());
         }
+
         public boolean hasNext() {
             try {
                 String string = reader.readLine();

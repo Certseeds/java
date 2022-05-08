@@ -86,7 +86,7 @@ public class Main {
         public BufferedReader br;
         public StringTokenizer tokenizer;
 
-        public InputReader(InputStream stream){
+        public InputReader(InputStream stream) {
             br = new BufferedReader(new InputStreamReader(stream), 327680);
             tokenizer = null;
         }

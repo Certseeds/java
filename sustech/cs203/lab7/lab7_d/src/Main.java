@@ -1,47 +1,46 @@
 import java.io.*;
-import java.util.*;
+import java.util.StringTokenizer;
 
 public class Main {
     static PrintWriter out;
     static InputReader in;
 
-    public static void main(String []args){
+    public static void main(String[] args) {
         out = new PrintWriter(System.out);
         in = new InputReader(System.in);
-        for (int t = in.nextInt(); t >0; t--) {
+        for (int t = in.nextInt(); t > 0; t--) {
             int numbers = in.nextInt();
             int kth = in.nextInt();
-            int HeapNumbers =  0;
+            int HeapNumbers = 0;
             int[] beginArray = new int[numbers + 1];
             //判断是大还是小;
-            if( (kth<5000)) {
+            if ((kth < 5000)) {
                 //第k大,用最大堆
-                for (int i = 1; i < numbers +1; i++) {
+                for (int i = 1; i < numbers + 1; i++) {
                     HeapNumbers++;
                     beginArray[i] = in.nextInt();
-                    judgeaddMax(HeapNumbers,beginArray);
+                    judgeaddMax(HeapNumbers, beginArray);
                 }
-                for (int i = 0; i < kth-1; i++) {
+                for (int i = 0; i < kth - 1; i++) {
                     swap(beginArray, 1, HeapNumbers);
                     HeapNumbers--;
-                    if ( HeapNumbers != 1) {
+                    if (HeapNumbers != 1) {
                         minusCircleMax(1, HeapNumbers, beginArray);
                     }
                 }
                 out.print(beginArray[1]);
-            }
-            else {
+            } else {
                 //第N -K +1小,用最小堆
-                kth = numbers - kth +1;
-                for (int i = 1; i < numbers +1; i++) {
-                    HeapNumbers ++;
+                kth = numbers - kth + 1;
+                for (int i = 1; i < numbers + 1; i++) {
+                    HeapNumbers++;
                     beginArray[i] = in.nextInt();
-                    judgeadd(HeapNumbers,beginArray);
+                    judgeadd(HeapNumbers, beginArray);
                 }
-                for (int i = 0; i < kth-1; i++) {
+                for (int i = 0; i < kth - 1; i++) {
                     swap(beginArray, 1, HeapNumbers);
                     HeapNumbers--;
-                    if ( HeapNumbers!= 1) {
+                    if (HeapNumbers != 1) {
                         minusCircle(1, HeapNumbers, beginArray);
                     }
                 }
@@ -53,14 +52,17 @@ public class Main {
         }
         out.close();
     }
-    public static void judgeadd(int number,int[] beginArray) {
+
+    public static void judgeadd(int number, int[] beginArray) {
         if (number == 1)
             return;
         int fatherNumber = number / 2;
         while (!isaddOk(fatherNumber, number, beginArray)) {
             fatherNumber = fatherNumber / 2;
         }
-    } public static void judgeaddMax(int number,int[] beginArray) {
+    }
+
+    public static void judgeaddMax(int number, int[] beginArray) {
         if (number == 1)
             return;
         int fatherNumber = number / 2;
@@ -68,6 +70,7 @@ public class Main {
             fatherNumber = fatherNumber / 2;
         }
     }
+
     public static boolean isaddOkMax(int fatherNumber, int countNumber, int[] beginArray) {
 
         if (fatherNumber == 0)
@@ -91,6 +94,7 @@ public class Main {
         }
         return false;
     }
+
     public static boolean isaddOk(int fatherNumber, int countNumber, int[] beginArray) {
         if (fatherNumber == 0)
             return true;
@@ -113,11 +117,13 @@ public class Main {
         }
         return false;
     }
+
     public static void swap(int[] beginArray, int number1, int number2) {
         int temp = beginArray[number1];
         beginArray[number1] = beginArray[number2];
         beginArray[number2] = temp;
     }
+
     public static void minusCircleMax(int fatherNumber, int count, int[] beginArray) {
         if (judgementMax(fatherNumber, count, beginArray)) {
             return;
@@ -125,6 +131,7 @@ public class Main {
         minusCircleMax(fatherNumber * 2, count, beginArray);
         minusCircleMax(fatherNumber * 2 + 1, count, beginArray);
     }
+
     public static void minusCircle(int fatherNumber, int count, int[] beginArray) {
         if (judgement(fatherNumber, count, beginArray)) {
             return;
@@ -132,6 +139,7 @@ public class Main {
         minusCircle(fatherNumber * 2, count, beginArray);
         minusCircle(fatherNumber * 2 + 1, count, beginArray);
     }
+
     public static boolean judgementMax(int fatherNumber, int count, int[] beginArray) {
         if (count <= 1) {
             return true;
@@ -156,6 +164,7 @@ public class Main {
         }
         return false;
     }
+
     public static boolean judgement(int fatherNumber, int count, int[] beginArray) {
         if (count <= 1) {
             return true;
@@ -179,34 +188,36 @@ public class Main {
         }
         return false;
     }
-private static final class InputReader {
-    public BufferedReader br;
-    public StringTokenizer tokenizer;
 
-    public InputReader(InputStream stream){
-        br = new BufferedReader(new InputStreamReader(stream), 327680);
-        tokenizer = null;
-    }
+    private static final class InputReader {
+        public BufferedReader br;
+        public StringTokenizer tokenizer;
 
-    public int nextInt() {
-        try {
-            int c = br.read();
-            while (c <= 32) {
-                c = br.read();
+        public InputReader(InputStream stream) {
+            br = new BufferedReader(new InputStreamReader(stream), 327680);
+            tokenizer = null;
+        }
+
+        public int nextInt() {
+            try {
+                int c = br.read();
+                while (c <= 32) {
+                    c = br.read();
+                }
+                boolean negative = false;
+                if (c == '-') {
+                    negative = true;
+                    c = br.read();
+                }
+                int x = 0;
+                while (c > 32) {
+                    x = x * 10 + c - '0';
+                    c = br.read();
+                }
+                return negative ? -x : x;
+            } catch (IOException e) {
+                return -1;
             }
-            boolean negative = false;
-            if (c == '-') {
-                negative = true;
-                c = br.read();
-            }
-            int x = 0;
-            while (c > 32) {
-                x = x * 10 + c - '0';
-                c = br.read();
-            }
-            return negative ? -x : x;
-        } catch (IOException e) {
-            return -1;
         }
     }
-}}
+}

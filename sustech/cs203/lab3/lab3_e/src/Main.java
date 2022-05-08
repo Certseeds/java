@@ -55,6 +55,7 @@ public class Main {
             br = new BufferedReader(new InputStreamReader(stream), 327680);
             tokenizer = null;
         }
+
         public int nextInt() {
             try {
                 int c = br.read();

@@ -5,7 +5,7 @@ public class Main {
     static PrintWriter out;
     static InputReader in;
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         out = new PrintWriter(System.out);
         in = new InputReader(System.in);
         for (int t = in.nextInt(); t > 0; t--) { // As same as scanner.nextInt()

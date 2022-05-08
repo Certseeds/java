@@ -121,13 +121,11 @@ class Main {
 
         private static final class Node {
             int Value;
-            ArrayList<Node> children;
-            ArrayList<Integer> quanzhong;
+            ArrayList<Node> children = new ArrayList<>();
+            ArrayList<Integer> quanzhong = new ArrayList<>();
 
             public Node(int value) {
                 this.Value = value;
-                children = new ArrayList<>();
-                quanzhong = new ArrayList<>();
             }
         }
     }
