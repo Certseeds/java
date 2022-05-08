@@ -2,8 +2,8 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner cin = new Scanner(System.in);
-        long times = cin.nextLong();
+        final Scanner cin = new Scanner(System.in);
+        final long times = cin.nextLong();
         for (long i = 0; i < times; i++) {
             final long inputNumber = cin.nextLong();
             final long temp = inputNumber / 19;
