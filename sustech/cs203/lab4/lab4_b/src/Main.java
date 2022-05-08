@@ -1,44 +1,41 @@
 import java.io.*;
-import java.util.*;
+import java.util.Stack;
+import java.util.StringTokenizer;
 
 
 public class Main {
     static PrintWriter out;
     static InputReader in;
 
-    public static void main(String args[]) throws IOException {
+    public static void main(String[] args) {
         out = new PrintWriter(System.out);
         in = new InputReader(System.in);
         for (int t = in.nextInt(); t > 0; t--) { // As same as scanner.nextInt()
             int length = in.nextInt();
             String temp = in.next();
             if (length % 2 == 1) {
-                //out.print("1");
                 out.print("NO");
-            }else {
-                //out.print(t);
-                int [] temp2 = new int[length];
-                for (int i =0;i < length;i++) {
-                    //out.println((int)temp.charAt(i));
-                    temp2[i] = (int)temp.charAt(i);
-                    //out.close();;
+            } else {
+                int[] temp2 = new int[length];
+                for (int i = 0; i < length; i++) {
+                    temp2[i] = temp.charAt(i);
                 }
-                Stack <Integer> brackets = new Stack<Integer>();
+                Stack<Integer> brackets = new Stack<>();
                 brackets.push(temp2[0]);
-                a1:for (int i =1;i < length;i++) {
-                    if(temp2[i] == 40 || temp2[i] == 123||temp2[i] == 91) {
+                for (int i = 1; i < length; i++) {
+                    if (temp2[i] == 40 || temp2[i] == 123 || temp2[i] == 91) {
                         brackets.push(temp2[i]);
-                    }
-                    else{
+                    } else {
                         int temp3 = Math.abs(brackets.peek() - temp2[i]);
-                        if(temp3 >=1&&temp3<=2) {
+                        if (temp3 >= 1 && temp3 <= 2) {
                             brackets.pop();
-                        }
-                        else {//out.print(i);
+                        } else {//out.print(i);
                             out.print("NO");
-                            break a1;}
+                            break;
+                        }
                     }
-                }if(brackets.empty()) {out.print("YES");}
+                }
+                if (brackets.empty()) {out.print("YES");}
 
             }
             if (t != 1) {out.println();}
@@ -49,11 +46,11 @@ public class Main {
 
 }
 
-class InputReader {
+final class InputReader {
     public BufferedReader br;
     public StringTokenizer tokenizer;
 
-    public InputReader(InputStream stream) throws FileNotFoundException {
+    public InputReader(InputStream stream) {
         br = new BufferedReader(new InputStreamReader(stream), 327680);
         tokenizer = null;
     }
