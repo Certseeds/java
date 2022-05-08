@@ -1,20 +1,21 @@
 import java.io.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Stack;
+import java.util.StringTokenizer;
 
 class Main {
     static PrintWriter out;
     static InputReader in;
 
-    public static void main(String args[]) throws IOException {
+    public static void main(String[] args) {
         out = new PrintWriter(System.out);
         in = new InputReader(System.in);
         for (int t = in.nextInt(); t > 0; t--) { // As same as scanner.nextInt()
             int n = in.nextInt();
             int m = in.nextInt();
             boolean[] isVisited = new boolean[n + 1];
-            for (int i = 0; i < isVisited.length; i++) {
-                isVisited[i] = false;
-            }
+            Arrays.fill(isVisited, false);
             long longest = 0;
             Graph graph = new Graph(n);
             for (int i = 0; i < m; i++) {
@@ -38,7 +39,7 @@ class Main {
         out.close();
     }
 
-    static class Graph {
+    private static final class Graph {
         int number;
         Node[] GraphLine;
 
@@ -50,72 +51,33 @@ class Main {
             }
         }
 
-        static class Node {
-            int Value;
-            ArrayList<Node> children;
-            ArrayList<Integer> quanzhong;
-
-            public Node(int value) {
-                this.Value = value;
-                children = new ArrayList<Node>();
-                quanzhong = new ArrayList<Integer>();
-            }
-        }
-
         void bulidEdge(int begin, int finalNumber, Integer quanzhong) {
             if (GraphLine[begin].children.contains(finalNumber)) {
                 int index = GraphLine[begin].children.indexOf(finalNumber);
                 int temp = this.GraphLine[begin].quanzhong.get(index);
-                this.GraphLine[begin].quanzhong.set(index,(int)Math.max(temp, quanzhong));
-            }
-            else {
+                this.GraphLine[begin].quanzhong.set(index, (int) Math.max(temp, quanzhong));
+            } else {
                 this.GraphLine[begin].children.add(GraphLine[finalNumber]);
                 this.GraphLine[begin].quanzhong.add(quanzhong);
             }
         }
 
- /*       public boolean BFSway(int BFSInputNumber, int testNumber) {
-            boolean[] isVisited = new boolean[this.number + 1];
-            Queue<Integer> queue = new LinkedList<Integer>();
-            isVisited[BFSInputNumber] = true;
-            queue.add(BFSInputNumber);
-            while (queue.size() != 0) {
-                int beginNumber = queue.poll();
-                ArrayList<Node> tempIn = this.GraphLine[beginNumber].children;
-                int count = 0;
-                int finalNumber = this.GraphLine[beginNumber].children.size();
-                while (count < finalNumber) {
-                    if (!isVisited[tempIn.get(count).Value]) {
-                        isVisited[tempIn.get(count).Value] = true;
-                        queue.add(tempIn.get(count).Value);
-                    }
-                    count++;
-
-                }
-            }
-            boolean canVisited = isVisited[testNumber];
-            return canVisited;
-
-        }
-*/
-
-
         public void topoSort(int root, boolean[] visited, Stack<Integer> stack) {
             visited[root] = true;
-            Stack<Integer> tempTopo = new Stack<Integer>();
+            Stack<Integer> tempTopo = new Stack<>();
             tempTopo.push(root);
-            while(tempTopo.size() != 0) {
+            while (tempTopo.size() != 0) {
                 int beginNumber = tempTopo.peek();
                 boolean needPop = true;
                 int count = 0;
                 ArrayList<Node> tempIn = this.GraphLine[beginNumber].children;
                 int finalNumber = tempIn.size();
-                a2: while(count < finalNumber) {
+                while (count < finalNumber) {
                     if (!visited[tempIn.get(count).Value]) {
                         visited[tempIn.get(count).Value] = true;
                         tempTopo.push(tempIn.get(count).Value);
                         needPop = false;
-                        break a2;
+                        break;
                     }
                     count++;
                 }
@@ -126,15 +88,13 @@ class Main {
         }
 
         public long longestPath(int begin) {
-            Stack<Integer> stack = new Stack<Integer>();
+            Stack<Integer> stack = new Stack<>();
             long[] distance = new long[this.number + 1];
-            for (int i = 0; i < distance.length; i++) {
-                distance[i] = Integer.MIN_VALUE;
-            }
+            Arrays.fill(distance, Integer.MIN_VALUE);
             distance[begin] = 0;
             boolean[] isvisited = new boolean[this.number + 1];
             for (int i = 1; i < this.number + 1; i++) {
-                if (isvisited[i] == false) {
+                if (!isvisited[i]) {
                     topoSort(i, isvisited, stack);
                 }
             }
@@ -144,7 +104,7 @@ class Main {
                 int newRoot = stack.pop();
                 //  out.println(newRoot + "*");
                 if (distance[newRoot] != Integer.MIN_VALUE) {
-                    for (int i = 0; i <GraphLine[newRoot].children.size(); i++) {
+                    for (int i = 0; i < GraphLine[newRoot].children.size(); i++) {
                         if (distance[GraphLine[newRoot].children.get(i).Value] < distance[GraphLine[newRoot].Value] + GraphLine[newRoot].quanzhong.get(i)) {
                             distance[GraphLine[newRoot].children.get(i).Value] = distance[GraphLine[newRoot].Value] + GraphLine[newRoot].quanzhong.get(i);
                         }
@@ -153,104 +113,57 @@ class Main {
             }
             long maxMium = 0;
             for (int i = 1; i < distance.length; i++) {
-                maxMium = (long) Math.max(maxMium, distance[i]);
+                maxMium = Math.max(maxMium, distance[i]);
             }
-            //out.println(Arrays.toString(distance));
-            //out.println(Arrays.toString(isvisited));
             return maxMium;
 
         }
-    }
 
-}
-/*
- * // public int DFSway(int DFSinputNumber) { // boolean[] isVisited = new
- * boolean[this.number + 1]; // Stack<Integer> stack = new Stack<Integer>(); //
- * isVisited[DFSinputNumber] = true; // stack.add(DFSinputNumber); //
- * while(stack.size() != 0) { // int beginNumber = stack.peek(); //
- * ArrayList<Node> tempIn = this.GraphLine[beginNumber].children; // int count =
- * 0; // int finalNumber = this.GraphLine[beginNumber].children.size(); // while
- * (count < finalNumber) { // if (!isVisited[tempIn.get(count).Value]) { //
- * isVisited[tempIn.get(count).Value] = true; //
- * stack.add(tempIn.get(count).Value); // } // count++; // // } // } // // //
- * return 0; // } }
- *
- * }
- */
+        private static final class Node {
+            int Value;
+            ArrayList<Node> children;
+            ArrayList<Integer> quanzhong;
 
-class InputReader {
-    public BufferedReader br;
-    public StringTokenizer tokenizer;
-
-    public InputReader(InputStream stream) throws FileNotFoundException {
-        br = new BufferedReader(new InputStreamReader(stream), 327680);
-        tokenizer = null;
-    }
-
-    public boolean hasNext() {
-        while (tokenizer == null || !tokenizer.hasMoreElements()) {
-            try {
-                tokenizer = new StringTokenizer(br.readLine());
-            } catch (Exception e) {
-                return false;
+            public Node(int value) {
+                this.Value = value;
+                children = new ArrayList<>();
+                quanzhong = new ArrayList<>();
             }
         }
-        return true;
     }
 
-    public String next() {
-        while (tokenizer == null || !tokenizer.hasMoreTokens()) {
+
+    private static final class InputReader {
+        public BufferedReader br;
+        public StringTokenizer tokenizer;
+
+        public InputReader(InputStream stream) {
+            br = new BufferedReader(new InputStreamReader(stream), 327680);
+            tokenizer = null;
+        }
+
+        public int nextInt() {
             try {
-                tokenizer = new StringTokenizer(br.readLine());
+                int c = br.read();
+                while (c <= 32) {
+                    c = br.read();
+                }
+                boolean negative = false;
+                if (c == '-') {
+                    negative = true;
+                    c = br.read();
+                }
+                int x = 0;
+                while (c > 32) {
+                    x = x * 10 + c - '0';
+                    c = br.read();
+                }
+                return negative ? -x : x;
             } catch (IOException e) {
-                throw new RuntimeException(e);
+                return -1;
             }
         }
-        return tokenizer.nextToken();
-    }
 
-    public int nextInt() {
-        try {
-            int c = br.read();
-            while (c <= 32) {
-                c = br.read();
-            }
-            boolean negative = false;
-            if (c == '-') {
-                negative = true;
-                c = br.read();
-            }
-            int x = 0;
-            while (c > 32) {
-                x = x * 10 + c - '0';
-                c = br.read();
-            }
-            return negative ? -x : x;
-        } catch (IOException e) {
-            return -1;
-        }
-    }
 
-    public long nextLong() {
-        try {
-            int c = br.read();
-            while (c <= 32) {
-                c = br.read();
-            }
-            boolean negative = false;
-            if (c == '-') {
-                negative = true;
-                c = br.read();
-            }
-            long x = 0;
-            while (c > 32) {
-                x = x * 10 + c - '0';
-                c = br.read();
-            }
-            return negative ? -x : x;
-        } catch (IOException e) {
-            return -1;
-        }
     }
-
 }

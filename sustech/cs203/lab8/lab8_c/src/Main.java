@@ -1,11 +1,14 @@
 import java.io.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.StringTokenizer;
 
 class Main {
     static PrintWriter out;
     static InputReader in;
 
-    public static void main(String args[]) throws IOException {
+    public static void main(String[] args) {
         out = new PrintWriter(System.out);
         in = new InputReader(System.in);
         for (int t = in.nextInt(); t > 0; t--) { // As same as scanner.nextInt()
@@ -30,7 +33,7 @@ class Main {
         // flush the buffer.
     }
 
-    static class Graph {
+    private static final class Graph {
         int number;
         Node[] GraphLine;
 
@@ -39,16 +42,6 @@ class Main {
             this.GraphLine = new Node[number + 1];
             for (int j = 0; j < number + 1; j++) {
                 GraphLine[j] = new Node(j);
-            }
-        }
-
-        static class Node {
-            int Value;
-            ArrayList<Node> children;
-
-            public Node(int value) {
-                this.Value = value;
-                children = new ArrayList<Node>();
             }
         }
 
@@ -63,7 +56,7 @@ class Main {
             for (int i = 0; i < this.number + 1; i++) {
                 depth[i] = -1;
             }
-            Queue<Integer> queue = new LinkedList<Integer>();
+            Queue<Integer> queue = new LinkedList<>();
             isVisited[BFSInputNumber] = true;
             depth[BFSInputNumber] = 0;
             queue.add(BFSInputNumber);
@@ -84,83 +77,50 @@ class Main {
 
             return depth;
         }
-    }
 
-}
+        private static final class Node {
+            int Value;
+            ArrayList<Node> children;
 
-class InputReader {
-    public BufferedReader br;
-    public StringTokenizer tokenizer;
-
-    public InputReader(InputStream stream) throws FileNotFoundException {
-        br = new BufferedReader(new InputStreamReader(stream), 327680);
-        tokenizer = null;
-    }
-
-    public boolean hasNext() {
-        while (tokenizer == null || !tokenizer.hasMoreElements()) {
-            try {
-                tokenizer = new StringTokenizer(br.readLine());
-            } catch (Exception e) {
-                return false;
+            public Node(int value) {
+                this.Value = value;
+                children = new ArrayList<>();
             }
         }
-        return true;
     }
 
-    public String next() {
-        while (tokenizer == null || !tokenizer.hasMoreTokens()) {
+
+    private static final class InputReader {
+        public BufferedReader br;
+        public StringTokenizer tokenizer;
+
+        public InputReader(InputStream stream) {
+            br = new BufferedReader(new InputStreamReader(stream), 327680);
+            tokenizer = null;
+        }
+
+        public int nextInt() {
             try {
-                tokenizer = new StringTokenizer(br.readLine());
+                int c = br.read();
+                while (c <= 32) {
+                    c = br.read();
+                }
+                boolean negative = false;
+                if (c == '-') {
+                    negative = true;
+                    c = br.read();
+                }
+                int x = 0;
+                while (c > 32) {
+                    x = x * 10 + c - '0';
+                    c = br.read();
+                }
+                return negative ? -x : x;
             } catch (IOException e) {
-                throw new RuntimeException(e);
+                return -1;
             }
         }
-        return tokenizer.nextToken();
-    }
 
-    public int nextInt() {
-        try {
-            int c = br.read();
-            while (c <= 32) {
-                c = br.read();
-            }
-            boolean negative = false;
-            if (c == '-') {
-                negative = true;
-                c = br.read();
-            }
-            int x = 0;
-            while (c > 32) {
-                x = x * 10 + c - '0';
-                c = br.read();
-            }
-            return negative ? -x : x;
-        } catch (IOException e) {
-            return -1;
-        }
-    }
 
-    public long nextLong() {
-        try {
-            int c = br.read();
-            while (c <= 32) {
-                c = br.read();
-            }
-            boolean negative = false;
-            if (c == '-') {
-                negative = true;
-                c = br.read();
-            }
-            long x = 0;
-            while (c > 32) {
-                x = x * 10 + c - '0';
-                c = br.read();
-            }
-            return negative ? -x : x;
-        } catch (IOException e) {
-            return -1;
-        }
     }
-
 }

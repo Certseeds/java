@@ -1,11 +1,12 @@
 import java.io.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.StringTokenizer;
 
 class Main {
     static PrintWriter out;
     static InputReader in;
 
-    public static void main(String args[]) throws IOException {
+    public static void main(String[] args) {
         out = new PrintWriter(System.out);
         in = new InputReader(System.in);
         for (int t = in.nextInt(); t > 0; t--) { // As same as scanner.nextInt()
@@ -13,7 +14,7 @@ class Main {
             int m = in.nextInt();
             Graph graph = new Graph(n);
             for (int i = 0; i < m; i++) {
-                graph.bulidEdge(in.nextInt(),in.nextInt());
+                graph.bulidEdge(in.nextInt(), in.nextInt());
             }
             long numberWIllPRint = graph.findClique();
             out.print(numberWIllPRint);
@@ -25,31 +26,22 @@ class Main {
         // flush the buffer.
     }
 
-    static class Graph {
+    private static final class Graph {
         int number;
         Node[] GraphLine;
         boolean[][] hasEdge;
+
         Graph(int number) {
             this.number = number;
             this.GraphLine = new Node[number + 1];
             for (int j = 0; j < number + 1; j++) {
                 GraphLine[j] = new Node(j);
             }
-            this.hasEdge = new boolean[number +1][number +1];
+            this.hasEdge = new boolean[number + 1][number + 1];
             for (int i = 0; i < this.number + 1; i++) {
-                for (int j = 0; j < this.number +1; j++) {
+                for (int j = 0; j < this.number + 1; j++) {
                     hasEdge[i][j] = false;
                 }
-            }
-        }
-
-        static class Node {
-            int Value;
-            ArrayList<Node> children;
-
-            public Node(int value) {
-                this.Value = value;
-                children = new ArrayList<Node>();
             }
         }
 
@@ -59,14 +51,15 @@ class Main {
             hasEdge[begin][finalNumber] = true;
             hasEdge[finalNumber][begin] = true;
         }
+
         public int findClique() {
             int numberOfClique = 0;
-            for (int i = 1; i <this.number+1; i++) {
-                for (int j = i+1; j < this.number+1; j++) {
-                    for (int k = j+1; k < this.number+1; k++) {
-                        for (int l = k+1 ; l < this.number+1; l++) {
-                            if (hasEdge[i][j] && hasEdge[i][k] &&hasEdge[i][l]&&hasEdge[j][k]&&hasEdge[j][l]&&hasEdge[k][l]) {
-                                numberOfClique ++;
+            for (int i = 1; i < this.number + 1; i++) {
+                for (int j = i + 1; j < this.number + 1; j++) {
+                    for (int k = j + 1; k < this.number + 1; k++) {
+                        for (int l = k + 1; l < this.number + 1; l++) {
+                            if (hasEdge[i][j] && hasEdge[i][k] && hasEdge[i][l] && hasEdge[j][k] && hasEdge[j][l] && hasEdge[k][l]) {
+                                numberOfClique++;
                             }
                         }
                     }
@@ -76,110 +69,48 @@ class Main {
 
         }
 
-        public int[] BFSway(int BFSInputNumber) {
-            boolean[] isVisited = new boolean[this.number + 1];
-            int[] depth = new int[this.number + 1];
-            for (int i = 0; i < this.number + 1; i++) {
-                depth[i] = -1;
+        private static final class Node {
+            int Value;
+            ArrayList<Node> children;
+
+            public Node(int value) {
+                this.Value = value;
+                children = new ArrayList<>();
             }
-            Queue<Integer> queue = new LinkedList<Integer>();
-            isVisited[BFSInputNumber] = true;
-            depth[BFSInputNumber] = 0;
-            queue.add(BFSInputNumber);
-            while (queue.size() != 0) {
-                int beginNumber = queue.poll();
-                ArrayList<Node> tempIn = this.GraphLine[beginNumber].children;
-                int count = 0;
-                int finalNumber = this.GraphLine[beginNumber].children.size();
-                while (count < finalNumber) {
-                    if (!isVisited[tempIn.get(count).Value]) {
-                        isVisited[tempIn.get(count).Value] = true;
-                        queue.add(tempIn.get(count).Value);
-                        depth[tempIn.get(count).Value] = depth[beginNumber] + 1;
-                    }
-                    count++;
+        }
+    }
+
+    private static final class InputReader {
+        public BufferedReader br;
+        public StringTokenizer tokenizer;
+
+        public InputReader(InputStream stream) {
+            br = new BufferedReader(new InputStreamReader(stream), 327680);
+            tokenizer = null;
+        }
+
+        public int nextInt() {
+            try {
+                int c = br.read();
+                while (c <= 32) {
+                    c = br.read();
                 }
-            }
-
-            return depth;
-        }
-    }
-
-}
-
-class InputReader {
-    public BufferedReader br;
-    public StringTokenizer tokenizer;
-
-    public InputReader(InputStream stream) throws FileNotFoundException {
-        br = new BufferedReader(new InputStreamReader(stream), 327680);
-        tokenizer = null;
-    }
-
-    public boolean hasNext() {
-        while (tokenizer == null || !tokenizer.hasMoreElements()) {
-            try {
-                tokenizer = new StringTokenizer(br.readLine());
-            } catch (Exception e) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    public String next() {
-        while (tokenizer == null || !tokenizer.hasMoreTokens()) {
-            try {
-                tokenizer = new StringTokenizer(br.readLine());
+                boolean negative = false;
+                if (c == '-') {
+                    negative = true;
+                    c = br.read();
+                }
+                int x = 0;
+                while (c > 32) {
+                    x = x * 10 + c - '0';
+                    c = br.read();
+                }
+                return negative ? -x : x;
             } catch (IOException e) {
-                throw new RuntimeException(e);
+                return -1;
             }
         }
-        return tokenizer.nextToken();
-    }
 
-    public int nextInt() {
-        try {
-            int c = br.read();
-            while (c <= 32) {
-                c = br.read();
-            }
-            boolean negative = false;
-            if (c == '-') {
-                negative = true;
-                c = br.read();
-            }
-            int x = 0;
-            while (c > 32) {
-                x = x * 10 + c - '0';
-                c = br.read();
-            }
-            return negative ? -x : x;
-        } catch (IOException e) {
-            return -1;
-        }
-    }
 
-    public long nextLong() {
-        try {
-            int c = br.read();
-            while (c <= 32) {
-                c = br.read();
-            }
-            boolean negative = false;
-            if (c == '-') {
-                negative = true;
-                c = br.read();
-            }
-            long x = 0;
-            while (c > 32) {
-                x = x * 10 + c - '0';
-                c = br.read();
-            }
-            return negative ? -x : x;
-        } catch (IOException e) {
-            return -1;
-        }
     }
-
 }
