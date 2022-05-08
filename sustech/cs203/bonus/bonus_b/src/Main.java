@@ -1,11 +1,11 @@
 import java.io.*;
-import java.util.*;
+import java.util.StringTokenizer;
 
 public class Main {
     static PrintWriter out;
     static InputReader in;
 
-    public static void main(String args[]) throws IOException {
+    public static void main(String[] args) throws IOException {
         out = new PrintWriter(System.out);
         in = new InputReader(System.in);
         for (int t = in.nextInt(); t > 0; t--) { // As same as scanner.nextInt()
@@ -25,10 +25,10 @@ public class Main {
         // flush the buffer.
     }
 
-    public static int getMiddle(int array[], int begin, int finalNumber) {
-        int Max = Math.max(array[begin], Math.max(array[begin+(finalNumber - begin)/2], array[finalNumber]));
-        int Min = Math.min(array[begin], Math.min(array[begin+(finalNumber - begin)/2], array[finalNumber]));
-        int temp = array[begin] + array[finalNumber] + array[begin+(finalNumber - begin)/2] - Max-Min;
+    public static int getMiddle(int[] array, int begin, int finalNumber) {
+        int Max = Math.max(array[begin], Math.max(array[begin + (finalNumber - begin) / 2], array[finalNumber]));
+        int Min = Math.min(array[begin], Math.min(array[begin + (finalNumber - begin) / 2], array[finalNumber]));
+        int temp = array[begin] + array[finalNumber] + array[begin + (finalNumber - begin) / 2] - Max - Min;
         while (begin < finalNumber) {
             while (begin < finalNumber && array[finalNumber] >= temp) {
                 finalNumber--;
@@ -44,7 +44,7 @@ public class Main {
         return begin;
     }
 
-    public static void quicksort(int array[], int begin, int finalNumber, int k) {
+    public static void quicksort(int[] array, int begin, int finalNumber, int k) {
         int middle;
         if (begin < finalNumber) {
             middle = getMiddle(array, begin, finalNumber);
@@ -53,81 +53,37 @@ public class Main {
         }
     }
 
-}
 
-class InputReader {
-    public BufferedReader br;
-    public StringTokenizer tokenizer;
+    private static final class InputReader {
+        public BufferedReader br;
+        public StringTokenizer tokenizer;
 
-    public InputReader(InputStream stream) throws FileNotFoundException {
-        br = new BufferedReader(new InputStreamReader(stream), 327680);
-        tokenizer = null;
-    }
-
-    public boolean hasNext() {
-        while (tokenizer == null || !tokenizer.hasMoreElements()) {
-            try {
-                tokenizer = new StringTokenizer(br.readLine());
-            } catch (Exception e) {
-                return false;
-            }
+        public InputReader(InputStream stream) {
+            br = new BufferedReader(new InputStreamReader(stream), 327680);
+            tokenizer = null;
         }
-        return true;
-    }
 
-    public String next() {
-        while (tokenizer == null || !tokenizer.hasMoreTokens()) {
+        public int nextInt() {
             try {
-                tokenizer = new StringTokenizer(br.readLine());
+                int c = br.read();
+                while (c <= 32) {
+                    c = br.read();
+                }
+                boolean negative = false;
+                if (c == '-') {
+                    negative = true;
+                    c = br.read();
+                }
+                int x = 0;
+                while (c > 32) {
+                    x = x * 10 + c - '0';
+                    c = br.read();
+                }
+                return negative ? -x : x;
             } catch (IOException e) {
-                throw new RuntimeException(e);
+                return -1;
             }
         }
-        return tokenizer.nextToken();
-    }
 
-    public int nextInt() {
-        try {
-            int c = br.read();
-            while (c <= 32) {
-                c = br.read();
-            }
-            boolean negative = false;
-            if (c == '-') {
-                negative = true;
-                c = br.read();
-            }
-            int x = 0;
-            while (c > 32) {
-                x = x * 10 + c - '0';
-                c = br.read();
-            }
-            return negative ? -x : x;
-        } catch (IOException e) {
-            return -1;
-        }
     }
-
-    public long nextLong() {
-        try {
-            int c = br.read();
-            while (c <= 32) {
-                c = br.read();
-            }
-            boolean negative = false;
-            if (c == '-') {
-                negative = true;
-                c = br.read();
-            }
-            long x = 0;
-            while (c > 32) {
-                x = x * 10 + c - '0';
-                c = br.read();
-            }
-            return negative ? -x : x;
-        } catch (IOException e) {
-            return -1;
-        }
-    }
-
 }
