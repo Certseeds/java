@@ -160,48 +160,48 @@ public class Main {
         }
         return c;
     }
-}
 
-final class InputReader {
-    public BufferedReader br;
-    public StringTokenizer tokenizer;
+    private static final class InputReader {
+        public BufferedReader br;
+        public StringTokenizer tokenizer;
 
-    public InputReader(InputStream stream) {
-        br = new BufferedReader(new InputStreamReader(stream), 327680);
-        tokenizer = null;
-    }
-
-
-    public String next() {
-        while (tokenizer == null || !tokenizer.hasMoreTokens()) {
-            try {
-                tokenizer = new StringTokenizer(br.readLine());
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+        public InputReader(InputStream stream) {
+            br = new BufferedReader(new InputStreamReader(stream), 327680);
+            tokenizer = null;
         }
-        return tokenizer.nextToken();
-    }
 
-    public int nextInt() {
-        try {
-            int c = br.read();
-            while (c <= 32) {
-                c = br.read();
+
+        public String next() {
+            while (tokenizer == null || !tokenizer.hasMoreTokens()) {
+                try {
+                    tokenizer = new StringTokenizer(br.readLine());
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
             }
-            boolean negative = false;
-            if (c == '-') {
-                negative = true;
-                c = br.read();
+            return tokenizer.nextToken();
+        }
+
+        public int nextInt() {
+            try {
+                int c = br.read();
+                while (c <= 32) {
+                    c = br.read();
+                }
+                boolean negative = false;
+                if (c == '-') {
+                    negative = true;
+                    c = br.read();
+                }
+                int x = 0;
+                while (c > 32) {
+                    x = x * 10 + c - '0';
+                    c = br.read();
+                }
+                return negative ? -x : x;
+            } catch (IOException e) {
+                return -1;
             }
-            int x = 0;
-            while (c > 32) {
-                x = x * 10 + c - '0';
-                c = br.read();
-            }
-            return negative ? -x : x;
-        } catch (IOException e) {
-            return -1;
         }
     }
 }
