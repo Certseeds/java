@@ -36,7 +36,7 @@ public class Main {
             boolean printOut = true;
             boolean beginLeave = false;
             if (hasFather && !isNull(nodelist[fatherNumber])) {
-                Queue<Node> NodeQueue = new LinkedList<Node>();
+                Queue<Node> NodeQueue = new LinkedList<>();
                 NodeQueue.add(nodelist[fatherNumber]);
                 while (!NodeQueue.isEmpty()) {
                     Node useNode = NodeQueue.poll();
@@ -92,7 +92,7 @@ public class Main {
 
         public Node(int value) {
             this.Value = value;
-            // children = new ArrayList<Node>();
+            // children = new ArrayList<>();
             leftson = new Node();
             rightson = new Node();
         }

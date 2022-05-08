@@ -14,7 +14,7 @@ public class Main {
             int numbers = in.nextInt();
             Node[] Tree = new Node[numbers + 1];
             boolean[] isFather = new boolean[numbers + 1];
-            ArrayList<Integer> order = new ArrayList<Integer>();
+            ArrayList<Integer> order = new ArrayList<>();
             boolean isBST = true;
             boolean haveRoot = false;
             int RootNumber = 0;
@@ -79,7 +79,7 @@ public class Main {
                 }
                 // 当且仅当是是树而且有Root节点的,中序遍历和检索
                 if (haveRoot) {
-                    Stack<Node> stack = new Stack<Node>();
+                    Stack<Node> stack = new Stack<>();
                     Node root = Tree[RootNumber];
                     while (root.Value != 0 || !stack.empty()) {
                         while (root.Value != 0) {
@@ -125,7 +125,7 @@ public class Main {
 
         public Node(int value) {
             this.Value = value;
-            // children = new ArrayList<Node>();
+            // children = new ArrayList<>();
             leftson = new Node();
             rightson = new Node();
         }
