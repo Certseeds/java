@@ -21,7 +21,9 @@
     <inceptionYear>2019</inceptionYear>
     <modules>
         <module>week04</module>
+        <module>week05</module>
         <module>week10</module>
+        <module>week11</module>
     </modules>
     <dependencies>
         <dependency>
