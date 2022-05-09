@@ -1,16 +1,17 @@
-import java.io.*;
+import quick_read.input_reader;
+
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.PriorityQueue;
 import java.util.Queue;
-import java.util.StringTokenizer;
 
 class Main {
     static PrintWriter out;
-    static InputReader in;
+    static input_reader in;
 
     public static void main(String[] args) {
         out = new PrintWriter(System.out);
-        in = new InputReader(System.in);
+        in = new input_reader(System.in);
         for (int t = in.nextInt(); t > 0; t--) { // As same as scanner.nextInt()
             int n = in.nextInt();
             int m = in.nextInt();
@@ -128,8 +129,6 @@ class Main {
             this.GraphLine[finalNumber].children.add(GraphLine[begin]);
             this.GraphLine[begin].quanzhong.add(quanzhong);
             this.GraphLine[finalNumber].quanzhong.add(quanzhong);
-
-
         }
 
         private static final class Node {
@@ -144,36 +143,4 @@ class Main {
     }
 
 
-    private static final class InputReader {
-        public BufferedReader br;
-        public StringTokenizer tokenizer;
-
-        public InputReader(InputStream stream) {
-            br = new BufferedReader(new InputStreamReader(stream), 327680);
-            tokenizer = null;
-        }
-
-        public int nextInt() {
-            try {
-                int c = br.read();
-                while (c <= 32) {
-                    c = br.read();
-                }
-                boolean negative = false;
-                if (c == '-') {
-                    negative = true;
-                    c = br.read();
-                }
-                int x = 0;
-                while (c > 32) {
-                    x = x * 10 + c - '0';
-                    c = br.read();
-                }
-                return negative ? -x : x;
-            } catch (IOException e) {
-                return -1;
-            }
-        }
-
-    }
 }

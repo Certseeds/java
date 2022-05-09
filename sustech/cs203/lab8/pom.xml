@@ -25,4 +25,11 @@
         <module>lab8_h</module>
         <module>lab8_i</module>
     </modules>
+    <dependencies>
+        <dependency>
+            <groupId>nanoseeds.sustech.cs203</groupId>
+            <artifactId>quick_read</artifactId>
+            <version>${revision}</version>
+        </dependency>
+    </dependencies>
 </project>

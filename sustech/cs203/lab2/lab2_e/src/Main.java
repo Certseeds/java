@@ -1,13 +1,16 @@
-import java.io.*;
+import quick_read.input_reader;
+
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.util.Arrays;
-import java.util.StringTokenizer;
 
 
 public class Main {
     public static void main(String[] args) {
         final InputStream inputStream = System.in;
         final OutputStream outputStream = System.out;
-        final InputReader in = new InputReader(inputStream);
+        final input_reader in = new input_reader(inputStream);
         final PrintWriter out = new PrintWriter(outputStream);
         final Task solver = new Task();
         solver.solve(in, out);
@@ -29,7 +32,7 @@ public class Main {
     }
 
     private static final class Task {
-        public void solve(InputReader in, PrintWriter out) {
+        public void solve(input_reader in, PrintWriter out) {
             boolean judge = in.hasNext();
             while (judge) {
                 long lengthOfRun = in.nextInt();
@@ -70,44 +73,6 @@ public class Main {
             }
         }
 
-    }
-
-    private static final class InputReader {
-        public BufferedReader reader;
-        public StringTokenizer tokenizer;
-
-        public InputReader(InputStream stream) {
-            reader = new BufferedReader(new InputStreamReader(stream), 32768);
-            tokenizer = null;
-        }
-
-        public String next() {
-            while (tokenizer == null || !tokenizer.hasMoreTokens()) {
-                try {
-                    tokenizer = new StringTokenizer(reader.readLine());
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-            return tokenizer.nextToken();
-        }
-
-        public int nextInt() {
-            return Integer.parseInt(next());
-        }
-
-        public boolean hasNext() {
-            try {
-                String string = reader.readLine();
-                if (string == null) {
-                    return false;
-                }
-                tokenizer = new StringTokenizer(string);
-                return tokenizer.hasMoreTokens();
-            } catch (IOException e) {
-                return false;
-            }
-        }
     }
 
 }

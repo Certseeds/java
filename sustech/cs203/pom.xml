@@ -20,6 +20,7 @@
     </properties>
     <inceptionYear>2018</inceptionYear>
     <modules>
+        <module>quick_read</module>
         <module>welcome</module>
         <module>lab2</module>
         <module>lab3</module>

@@ -23,4 +23,12 @@
         <module>lab2_f</module>
         <module>lab2_g</module>
     </modules>
+
+    <dependencies>
+        <dependency>
+            <groupId>nanoseeds.sustech.cs203</groupId>
+            <artifactId>quick_read</artifactId>
+            <version>${revision}</version>
+        </dependency>
+    </dependencies>
 </project>

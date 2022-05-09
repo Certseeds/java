@@ -1,15 +1,16 @@
-import java.io.*;
+import quick_read.input_reader;
+
+import java.io.PrintWriter;
 import java.util.Stack;
-import java.util.StringTokenizer;
 
 
 public class Main {
     static PrintWriter out;
-    static InputReader in;
+    static input_reader in;
 
     public static void main(String[] args) {
         out = new PrintWriter(System.out);
-        in = new InputReader(System.in);
+        in = new input_reader(System.in);
         for (int t = in.nextInt(); t > 0; t--) { // As same as scanner.nextInt()
             int length = in.nextInt();
             String temp = in.next();
@@ -44,81 +45,4 @@ public class Main {
         // flush the buffer.
     }
 
-
-    private static final class InputReader {
-        public BufferedReader br;
-        public StringTokenizer tokenizer;
-
-        public InputReader(InputStream stream) {
-            br = new BufferedReader(new InputStreamReader(stream), 327680);
-            tokenizer = null;
-        }
-
-        public boolean hasNext() {
-            while (tokenizer == null || !tokenizer.hasMoreElements()) {
-                try {
-                    tokenizer = new StringTokenizer(br.readLine());
-                } catch (Exception e) {
-                    return false;
-                }
-            }
-            return true;
-        }
-
-        public String next() {
-            while (tokenizer == null || !tokenizer.hasMoreTokens()) {
-                try {
-                    tokenizer = new StringTokenizer(br.readLine());
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-            return tokenizer.nextToken();
-        }
-
-        public int nextInt() {
-            try {
-                int c = br.read();
-                while (c <= 32) {
-                    c = br.read();
-                }
-                boolean negative = false;
-                if (c == '-') {
-                    negative = true;
-                    c = br.read();
-                }
-                int x = 0;
-                while (c > 32) {
-                    x = x * 10 + c - '0';
-                    c = br.read();
-                }
-                return negative ? -x : x;
-            } catch (IOException e) {
-                return -1;
-            }
-        }
-
-        public long nextLong() {
-            try {
-                int c = br.read();
-                while (c <= 32) {
-                    c = br.read();
-                }
-                boolean negative = false;
-                if (c == '-') {
-                    negative = true;
-                    c = br.read();
-                }
-                long x = 0;
-                while (c > 32) {
-                    x = x * 10 + c - '0';
-                    c = br.read();
-                }
-                return negative ? -x : x;
-            } catch (IOException e) {
-                return -1;
-            }
-        }
-
-    }
 }

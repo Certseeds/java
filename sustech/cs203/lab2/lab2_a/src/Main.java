@@ -7,7 +7,7 @@ import java.util.StringTokenizer;
 public class Main {
 
     public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        final BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int times = Integer.parseInt(br.readLine());
         StringTokenizer st;
         for (int i = 0; i < times; i++) {
@@ -18,7 +18,7 @@ public class Main {
             st = new StringTokenizer(br.readLine());
             for (int j = 0; j < lengthOfIndex; j++) {
                 arrayReal[j] = Integer.parseInt(st.nextToken());
-            }//System.out.print(TwoFInd(arrayReal, DemoAppear));
+            }
             PrintDeemo(TwoFInd(arrayReal, DemoAppear), i, times);
         }
 

@@ -1,15 +1,16 @@
-import java.io.*;
+import quick_read.input_reader;
+
+import java.io.PrintWriter;
 import java.util.LinkedList;
 import java.util.Queue;
-import java.util.StringTokenizer;
 
 public class Main {
     static PrintWriter out;
-    static InputReader in;
+    static input_reader in;
 
     public static void main(String[] args) {
         out = new PrintWriter(System.out);
-        in = new InputReader(System.in);
+        in = new input_reader(System.in);
         for (int t = in.nextInt(); t > 0; t--) { // As same as scanner.nextInt()
             int numbers = in.nextInt();
             Node[] nodelist = new Node[numbers + 1];
@@ -98,37 +99,5 @@ public class Main {
             rightson = new Node();
         }
 
-    }
-
-    private static final class InputReader {
-        public BufferedReader br;
-        public StringTokenizer tokenizer;
-
-        public InputReader(InputStream stream) {
-            br = new BufferedReader(new InputStreamReader(stream), 327680);
-            tokenizer = null;
-        }
-
-        public int nextInt() {
-            try {
-                int c = br.read();
-                while (c <= 32) {
-                    c = br.read();
-                }
-                boolean negative = false;
-                if (c == '-') {
-                    negative = true;
-                    c = br.read();
-                }
-                int x = 0;
-                while (c > 32) {
-                    x = x * 10 + c - '0';
-                    c = br.read();
-                }
-                return negative ? -x : x;
-            } catch (IOException e) {
-                return -1;
-            }
-        }
     }
 }

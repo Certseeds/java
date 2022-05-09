@@ -1,17 +1,17 @@
-import java.io.*;
+import quick_read.input_reader;
+
+import java.io.PrintWriter;
 import java.util.LinkedList;
 import java.util.Queue;
-import java.util.StringTokenizer;
 
 
 public class Main {
     static PrintWriter out;
-    static InputReader in;
-    static int count = 1;
+    static input_reader in;
 
     public static void main(String[] args) {
         out = new PrintWriter(System.out);
-        in = new InputReader(System.in);
+        in = new input_reader(System.in);
         for (int t = in.nextInt(); t > 0; t--) {
             int row = in.nextInt();
             int column = in.nextInt();
@@ -182,16 +182,6 @@ public class Main {
                             queueAnothery.add(right);
                         }
 
-//                        out.println(Arrays.toString(isVisited[0]));
-//                        out.println(Arrays.toString(isVisited[1]));
-//                        out.println(Arrays.toString(isVisited[2]));
-//                        out.println(Arrays.toString(hadAdden[0]));
-//                        out.println(Arrays.toString(hadAdden[1]));
-//                        out.println(Arrays.toString(hadAdden[2]));
-//                        out.println(queuex.toString());
-//                        out.println(queuey.toString());
-//                        out.println(queueAnotherx.toString());
-//                        out.println(queueAnothery.toString());
                     }
                     countOfBolcks++;
                 }
@@ -202,40 +192,5 @@ public class Main {
             }
         }
         out.close();
-    }
-
-
-    private static final class InputReader {
-        public BufferedReader br;
-        public StringTokenizer tokenizer;
-
-        public InputReader(InputStream stream) {
-            br = new BufferedReader(new InputStreamReader(stream), 327680);
-            tokenizer = null;
-        }
-
-        public int nextInt() {
-            try {
-                int c = br.read();
-                while (c <= 32) {
-                    c = br.read();
-                }
-                boolean negative = false;
-                if (c == '-') {
-                    negative = true;
-                    c = br.read();
-                }
-                int x = 0;
-                while (c > 32) {
-                    x = x * 10 + c - '0';
-                    c = br.read();
-                }
-                return negative ? -x : x;
-            } catch (IOException e) {
-                return -1;
-            }
-        }
-
-
     }
 }

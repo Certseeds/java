@@ -28,4 +28,12 @@
         <module>lab9_k</module>
         <module>lab9_l</module>
     </modules>
+    <dependencies>
+        <dependency>
+            <groupId>nanoseeds.sustech.cs203</groupId>
+            <artifactId>quick_read</artifactId>
+            <version>0.0.2</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
 </project>
