@@ -1,45 +1,23 @@
 import lombok.AllArgsConstructor;
+import quick_read.input_reader;
 
-import java.io.*;
-import java.util.*;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.PrintWriter;
+import java.util.ArrayList;
 
-public class Main{
-    static class InputReader {
-        public BufferedReader reader;
-        public StringTokenizer tokenizer;
-
-        public InputReader(InputStream stream) {
-            reader = new BufferedReader(new InputStreamReader(stream), 32768);
-            tokenizer = null;
-        }
-
-        public String next() {
-            while (tokenizer == null || !tokenizer.hasMoreTokens()) {
-                try {
-                    tokenizer = new StringTokenizer(reader.readLine());
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-            return tokenizer.nextToken();
-        }
-
-        public int nextInt() {
-            return Integer.parseInt(next());
-        }
-    }
-
+public class Main {
     public static void main(String[] args) {
         InputStream inputStream = System.in;
         OutputStream outputStream = System.out;
-        InputReader in = new InputReader(inputStream);
+        input_reader in = new input_reader(inputStream);
         PrintWriter out = new PrintWriter(outputStream);
         int u = 121;
         solve(in, out);
         out.close();
     }
 
-    static void solve(InputReader in, PrintWriter out) {
+    static void solve(input_reader in, PrintWriter out) {
         int n = in.nextInt();
         int p = in.nextInt();
         int[] array = new int[n + 1];
@@ -80,7 +58,7 @@ public class Main{
         }
         int[] reverse = new int[length + 1];
         for (int i = 0; i < length; i++) {
-            reverse[i] = (reverse[i/2]/2) + (int) ((i % 2) * Math.pow(2,temp -1));
+            reverse[i] = (reverse[i / 2] / 2) + (int) ((i % 2) * Math.pow(2, temp - 1));
         }
 
         FFT(com1, 1, reverse, length);
@@ -94,7 +72,7 @@ public class Main{
             result[i] = (int) (com1[i].real / length + 0.5);
         }
         int[] Willoutput = new int[p];
-        for (int i = 0; i <2*p-1; i++) {
+        for (int i = 0; i < 2 * p - 1; i++) {
             Willoutput[rootArray2[i % (p - 1)]] += result[i];
         }
         Willoutput[1] = Willoutput[0];
@@ -115,7 +93,7 @@ public class Main{
                 array[reverse[i]] = temp2;
             }
         }
-        complex temp3 = new complex(0,0);
+        complex temp3 = new complex(0, 0);
         for (int i = 1; i < length; i *= 2) {
             double temp4 = Math.PI / i;
             temp3 = new complex(Math.cos(temp4), number * Math.sin(temp4));
@@ -133,23 +111,6 @@ public class Main{
 
     }
 
-    @AllArgsConstructor
-    public static class complex {
-        final double real,image;
-
-        public complex add(complex c1) {
-            return new complex(this.real + c1.real, this.image + c1.image);
-        }
-
-        public complex minus(complex c1) {
-            return new complex(this.real - c1.real, this.image - c1.image);
-        }
-
-        public complex multi(complex c1) {
-            return new complex(this.real * c1.real - this.image * c1.image, this.real * c1.image + this.image * c1.real);
-        }
-    }
-
     public static int getRoot(int p) {
         int[] primes = getPrime(p - 1);
         int lengthOfPrime = primes.length;
@@ -158,7 +119,7 @@ public class Main{
         for (int i = 2; i <= p - 1; i++) {
             boolean isRootNumber = true;
             for (int j = 1; j <= lengthOfPrime - 1; j++) {
-                if (judgeMod1(i, (p-1)/primes[j], p) == 1) {
+                if (judgeMod1(i, (p - 1) / primes[j], p) == 1) {
                     isRootNumber = false;
                     break;
                 }
@@ -220,5 +181,22 @@ public class Main{
             primes[i] = willreturn.get(i - 1);
         }
         return primes;
+    }
+
+    @AllArgsConstructor
+    public static class complex {
+        final double real, image;
+
+        public complex add(complex c1) {
+            return new complex(this.real + c1.real, this.image + c1.image);
+        }
+
+        public complex minus(complex c1) {
+            return new complex(this.real - c1.real, this.image - c1.image);
+        }
+
+        public complex multi(complex c1) {
+            return new complex(this.real * c1.real - this.image * c1.image, this.real * c1.image + this.image * c1.real);
+        }
     }
 }

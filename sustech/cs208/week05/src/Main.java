@@ -1,47 +1,28 @@
 import lombok.AllArgsConstructor;
+import quick_read.input_reader;
 
-import java.io.*;
-import java.util.*;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.PrintWriter;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.PriorityQueue;
+import java.util.Queue;
 /*
 Accept Successfully
 * */
 
 public class Main {
-    static class InputReader {
-        public BufferedReader reader;
-        public StringTokenizer tokenizer;
-
-        public InputReader(InputStream stream) {
-            reader = new BufferedReader(new InputStreamReader(stream), 32768);
-            tokenizer = null;
-        }
-
-        public String next() {
-            while (tokenizer == null || !tokenizer.hasMoreTokens()) {
-                try {
-                    tokenizer = new StringTokenizer(reader.readLine());
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-            return tokenizer.nextToken();
-        }
-
-        public int nextInt() {
-            return Integer.parseInt(next());
-        }
-    }
-
     public static void main(String[] args) {
         InputStream inputStream = System.in;
         OutputStream outputStream = System.out;
-        InputReader in = new InputReader(inputStream);
+        input_reader in = new input_reader(inputStream);
         PrintWriter out = new PrintWriter(outputStream);
         solve(in, out);
         out.close();
     }
 
-    static void solve(InputReader in, PrintWriter out) {
+    static void solve(input_reader in, PrintWriter out) {
         int n = in.nextInt();
         int[] begin = new int[n + 1];
         int[] end = new int[n + 1];
@@ -81,7 +62,7 @@ public class Main {
         boolean[] used = new boolean[endTime - beginTime + 1];
         //@Override
         final Comparator<pair> comparatorOfFriends = Comparator.comparingInt(o -> o.end);
-        final Queue<pair> friendsQueue = new PriorityQueue<pair>(comparatorOfFriends);
+        final Queue<pair> friendsQueue = new PriorityQueue<>(comparatorOfFriends);
         friendsQueue.addAll(Arrays.asList(friends).subList(1, friends.length));
         while (!friendsQueue.isEmpty()) {
             pair tempPair = friendsQueue.poll();
