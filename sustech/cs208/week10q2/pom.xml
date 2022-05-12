@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>nanoseeds.sustech</groupId>
+        <artifactId>cs208</artifactId>
+        <version>${revision}</version>
+    </parent>
+    <groupId>nanoseeds.sustech.cs208</groupId>
+    <artifactId>cs208_2019Spring_week10q2</artifactId>
+    <version>${revision}</version>
+    <name>nanoseeds.sustech.cs208.cs208_2019F_week10q2</name>
+    <description>2019Spring's cs208 week10q2</description>
+    <build>
+        <sourceDirectory>${project.basedir}/src</sourceDirectory>
+    </build>
+</project>
