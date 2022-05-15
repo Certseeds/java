@@ -1,0 +1,3 @@
+# testing
+
+This folder store the test files, aim to test packages, functions, and so on, etc...

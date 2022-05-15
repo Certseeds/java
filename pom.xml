@@ -26,6 +26,7 @@
     <modules>
         <module>springboot</module>
         <module>sustech</module>
+        <module>testing</module>
     </modules>
     <dependencies>
         <dependency>
