@@ -45,7 +45,7 @@ public class Main {
                 }
                 stopArray[stopNumber] = lengthOfRun;
                 Arrays.sort(stopArray);
-                long[] diffArray = new long[stopNumber + 2];
+                final long[] diffArray = new long[stopNumber + 2];
                 diffArray[0] = stopArray[0];
                 diffArray[stopNumber + 1] = 0;
                 long max = 0;
@@ -54,9 +54,7 @@ public class Main {
                     max = Math.max(max, diffArray[i]);
                 }
                 long begin = max;
-                long finalNumber = lengthOfRun;
-                long middle = 0;
-                while (begin <= finalNumber) {
+                for (long finalNumber = lengthOfRun, middle = 0; begin <= finalNumber; ) {
                     middle = begin + (finalNumber - begin) / 2;
                     if (judgement(diffArray, runerNumber, middle) == -1) {
                         finalNumber = middle - 1;
