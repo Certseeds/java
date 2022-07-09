@@ -9,7 +9,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 public class MainUIOfLifeControl {
-    static int[][] grid;
     private final static int[][] blockPattern = {
             {0, 0, 0, 0},
             {0, 1, 1, 0},
@@ -26,9 +25,10 @@ public class MainUIOfLifeControl {
             {1, 0, 1},
             {0, 1, 1}
     };
-    static int generation = 0;
     private final static int M = 10;
     private final static int N = 10;
+    static int[][] grid;
+    static int generation = 0;
     @FXML
     TextField gene_number;
     @FXML

@@ -1,12 +1,8 @@
 package spring_as_lib.config;
 
-import lombok.Getter;
-import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
-@Getter
-@Setter
-@ConfigurationProperties("service")
-public class ComponentProperties {
-    private String url, username, password, token;
+@ConfigurationProperties(ComponentProperties.PropertiesPrefix)
+public record ComponentProperties(String url, String username, String password, String token) {
+    public static final String PropertiesPrefix = "service";
 }

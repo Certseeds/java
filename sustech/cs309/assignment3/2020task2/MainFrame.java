@@ -19,8 +19,8 @@ public class MainFrame extends JFrame {
         this.add(buttonPanel);
 
 
-        final JButton red   = buttonPanel.getAddRed();
-        final JButton blue  = buttonPanel.getAddBlue();
+        final JButton red = buttonPanel.getAddRed();
+        final JButton blue = buttonPanel.getAddBlue();
         final JButton start = buttonPanel.getStart();
 
         mainPanel.addBallToPanel(new RedBall(Color.RED, 4, 5, 60));

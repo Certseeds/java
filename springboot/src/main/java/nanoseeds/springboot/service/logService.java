@@ -11,7 +11,8 @@ public class logService {
     public static void log() {
         log.info("hello, world");
     }
-    public static Logger get(){
+
+    public static Logger get() {
         return log;
     }
 }

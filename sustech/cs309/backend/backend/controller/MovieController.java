@@ -11,12 +11,12 @@ import java.util.List;
 
 @RestController
 public class MovieController {
+    private final MovieRepository movieRepository;
+
     @Autowired
     public MovieController(MovieRepository movieRepository) {
         this.movieRepository = movieRepository;
     }
-
-    private final MovieRepository movieRepository;
 
     @GetMapping("/movie")
     public List<Movie> getAllMovie() {

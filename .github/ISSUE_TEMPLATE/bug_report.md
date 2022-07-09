@@ -20,10 +20,10 @@ Steps to reproduce the bug.
 
 **Platform information:**
 <!-- Fill in any extra information that might be important for your issue. -->
- - OS: **Windows NT-WSL-1**
- - Compiler+version: **GCC 7.5.0**
- - release version: **0.0.5**
 
+- OS: **Windows NT-WSL-1**
+- Compiler+version: **GCC 7.5.0**
+- release version: **0.0.5**
 
 **Additional context**
 Add any other context about the problem here.

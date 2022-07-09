@@ -12,16 +12,6 @@ import javafx.stage.Stage;
 import java.io.File;
 
 public class MainUIOfLifeControl {
-    public static void setG_n_m_g(grid_n_m_gene g) {
-        gnmg = g;
-    }
-
-    public static grid_n_m_gene getG_n_m_g() {
-        return gnmg;
-    }
-
-    private static grid_n_m_gene gnmg = new grid_n_m_gene();
-
     static int[][] blockPattern = {
             {0, 0, 0, 0},
             {0, 1, 1, 0},
@@ -43,6 +33,7 @@ public class MainUIOfLifeControl {
             {1, 0, 1},
             {0, 1, 1}
     };
+    private static grid_n_m_gene gnmg = new grid_n_m_gene();
     //    static int[][] grid;
 //    static int generation = 0;
 //    static int M = 10;
@@ -62,11 +53,18 @@ public class MainUIOfLifeControl {
     @FXML
     Button BlinkerButton;
     private MainApp mainApp;
-
     @FXML
     private Stage primaryStage;
     @FXML
     private BorderPane rootLayout;
+
+    public static grid_n_m_gene getG_n_m_g() {
+        return gnmg;
+    }
+
+    public static void setG_n_m_g(grid_n_m_gene g) {
+        gnmg = g;
+    }
 
     @FXML
     public static void init(int[][] pattern, int M, int N) {

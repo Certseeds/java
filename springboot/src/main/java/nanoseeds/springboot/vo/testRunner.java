@@ -1,9 +1,8 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 package nanoseeds.springboot.vo;
 
-import nanoseeds.springboot.service.logService;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.tomcat.jni.Time;
+import nanoseeds.springboot.service.logService;
 import org.springframework.stereotype.Component;
 
 @Slf4j

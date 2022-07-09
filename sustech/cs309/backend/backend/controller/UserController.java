@@ -15,14 +15,13 @@ import java.util.UUID;
 
 @RestController
 public class UserController {
+    private final UserRepository userRepository;
+    private final TokenRepository tokenRepository;
     @Autowired
     public UserController(UserRepository userRepository, TokenRepository tokenRepository) {
         this.userRepository = userRepository;
         this.tokenRepository = tokenRepository;
     }
-
-    private final UserRepository userRepository;
-    private final TokenRepository tokenRepository;
 
     @PostMapping("/token")
     public TokenDo getToken(@RequestBody UserDO userDO) {

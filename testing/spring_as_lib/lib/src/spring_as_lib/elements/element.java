@@ -9,14 +9,12 @@ import java.util.Objects;
 
 @Component
 @EnableConfigurationProperties(ComponentProperties.class)
-public class element {
-    private final ComponentProperties componentProperties;
-
+public record element(ComponentProperties componentProperties) {
     public element(@Autowired ComponentProperties componentProperties) {
         this.componentProperties = componentProperties;
     }
 
     public String request() {
-        return String.valueOf(Objects.hash(componentProperties.getUrl(), componentProperties.getUsername()));
+        return String.valueOf(Objects.hash(componentProperties.url(), componentProperties.username()));
     }
 }

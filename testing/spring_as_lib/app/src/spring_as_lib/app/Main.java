@@ -7,6 +7,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 @EnableScheduling
 @SpringBootApplication(scanBasePackages = "spring_as_lib")
+// @EnableConfigurationProperties already define in lib
 public class Main {
 
     public static void main(String[] args) {

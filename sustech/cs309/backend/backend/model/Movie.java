@@ -1,6 +1,9 @@
 package backend.model;
 
-import lombok.*;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
@@ -56,7 +59,7 @@ public class Movie implements Serializable {
     @Override
     public boolean equals(Object o) {
         if (this == o) {return true;}
-        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)){ return false;}
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) {return false;}
         final Movie movie = (Movie) o;
         return autoId != null && Objects.equals(autoId, movie.autoId);
     }

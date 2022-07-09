@@ -28,6 +28,8 @@ public class FileEntry {
         this.newPath = null;
     }
 
+    public FileEntry() {}
+
     public String toSummaryString() {
         final DateTimeFormatter outputFormat = DateTimeFormatter.ofPattern("yyyyMMdd");
         return newPath + "," + source + "," + field + "," + outputFormat.format(date) + "," + length + "," + encoding;
@@ -45,7 +47,5 @@ public class FileEntry {
                 ", newPath='" + newPath + '\'' +
                 '}';
     }
-
-    public FileEntry() {}
 
 }

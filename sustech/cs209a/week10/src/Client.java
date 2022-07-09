@@ -10,6 +10,7 @@ import java.util.Scanner;
 public class Client {
     private static final String ip = "127.0.0.1";
     private static final int client_port = 23333;
+
     public static void main(String[] args) throws IOException {
         Scanner input = new Scanner(System.in);
         while (true) {

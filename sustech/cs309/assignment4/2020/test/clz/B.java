@@ -3,6 +3,13 @@ package clz;
 public class B {
 
     private C cDep;
+    private D dDep;
+
+    public B(C cDep, D dDep) {
+
+        this.cDep = cDep;
+        this.dDep = dDep;
+    }
 
     public C getCDep() {
         return cDep;
@@ -10,13 +17,5 @@ public class B {
 
     public D getDDep() {
         return dDep;
-    }
-
-    private D dDep;
-
-    public B(C cDep, D dDep) {
-
-        this.cDep = cDep;
-        this.dDep = dDep;
     }
 }

@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 package nanoseeds.springboot.service;
 
-import nanoseeds.springboot.vo.base;
-import nanoseeds.springboot.vo.dao.User;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import nanoseeds.springboot.vo.base;
+import nanoseeds.springboot.vo.dao.User;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 

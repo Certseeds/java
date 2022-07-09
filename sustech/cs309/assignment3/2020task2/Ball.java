@@ -9,10 +9,10 @@ import java.awt.*;
 public abstract class Ball extends JComponent implements Observer {
     public static final int TOTAL_NUM = 10;
     private static int count = 0;
+    private final int ballSize;
     private Color color;
     private int x, y;
     private int xSpeed, ySpeed;
-    private final int ballSize;
     private boolean visible;
 
     public Ball(Color color, int xSpeed, int ySpeed, int ballSize) {

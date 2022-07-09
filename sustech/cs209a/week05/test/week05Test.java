@@ -11,7 +11,7 @@ import week05.week05;
  */
 class week05Test {
     @Test
-    public void test_main(){
+    public void test_main() {
         final String[] input = new String[2];
         week05.main(input);
     }

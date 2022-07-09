@@ -12,13 +12,12 @@ import java.util.Map;
 @Controller
 public class TableController {
     private static final int DAY_SECOND = 24 * 60 * 60;
+    private final TokenRepository tokenRepository;
 
     @Autowired
     public TableController(TokenRepository tokenRepository) {
         this.tokenRepository = tokenRepository;
     }
-
-    private final TokenRepository tokenRepository;
 
     @PostMapping("/table")
     public String getCorrectOrNot(@RequestParam Map<String, String> params, Model model) {

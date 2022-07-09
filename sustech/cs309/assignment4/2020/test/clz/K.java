@@ -5,7 +5,7 @@ public class K {
     private E eDep;
     private F fDep;
 
-    public K(E eDep, F fDep){
+    public K(E eDep, F fDep) {
 
         this.eDep = eDep;
         this.fDep = fDep;

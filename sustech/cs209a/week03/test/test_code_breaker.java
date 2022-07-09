@@ -15,11 +15,10 @@ public class test_code_breaker {
     private static final String path_false = "secret.log";
     private static final String path_dir = "src";
     private static final String path_unsupport = "un.txt";
-
-    private static ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-    private static ByteArrayOutputStream errContent = new ByteArrayOutputStream();
     private static final PrintStream originalOut = System.out;
     private static final PrintStream originalErr = System.err;
+    private static ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+    private static ByteArrayOutputStream errContent = new ByteArrayOutputStream();
 
     @BeforeEach
     public void setUpStreams() {

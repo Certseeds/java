@@ -15,7 +15,7 @@ public class Examples {
         dateFormats();
     }
 
-    public static void detectEncodingAndRead(){
+    public static void detectEncodingAndRead() {
         File file = new File("indata/5.txt");
         CharsetDetector detector = new CharsetDetector();
         try {
@@ -24,19 +24,19 @@ public class Examples {
             CharsetMatch charsetMatch = detector.detect();
             String encoding = charsetMatch.getName();
             String content = charsetMatch.getString();
-            System.out.println("Detected encoding is: "+ encoding);
-            System.out.println("Content of file is :"+content);
+            System.out.println("Detected encoding is: " + encoding);
+            System.out.println("Content of file is :" + content);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public static void dateFormats(){
+    public static void dateFormats() {
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy/M/d");
-        LocalDate parsedDate = LocalDate.parse("2020/3/6",dateTimeFormatter);
-        System.out.println("Parsed date: "+parsedDate);
+        LocalDate parsedDate = LocalDate.parse("2020/3/6", dateTimeFormatter);
+        System.out.println("Parsed date: " + parsedDate);
 
         DateTimeFormatter outputFormat = DateTimeFormatter.ofPattern("yyyyMMdd");
-        System.out.println("Formatted date:"+outputFormat.format(parsedDate));
+        System.out.println("Formatted date:" + outputFormat.format(parsedDate));
     }
 }

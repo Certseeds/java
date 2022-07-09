@@ -12,13 +12,13 @@ import lombok.extern.jackson.Jacksonized;
 @Jacksonized
 @AllArgsConstructor
 public final class jsonObj extends base {
+    private static final String strStatic1 = "DO_NOT_SERIZED_IN_JSON";
     private final String str1;
     private final String str2;
     private final Long l1;
     private final Double d1;
     private final long l2;
     private final double d2;
-    private static final String strStatic1 = "DO_NOT_SERIZED_IN_JSON";
 
     private jsonObj() {
         throw re;

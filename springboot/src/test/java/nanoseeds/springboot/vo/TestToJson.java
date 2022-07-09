@@ -1,7 +1,7 @@
 package nanoseeds.springboot.vo;
 
-import nanoseeds.springboot.util.JsonUtil;
 import lombok.extern.slf4j.Slf4j;
+import nanoseeds.springboot.util.JsonUtil;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.autoconfigure.json.JsonTest;

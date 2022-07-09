@@ -81,7 +81,7 @@ public class BaseTest {
         log.info(String.valueOf(java8UTC0));
         log.info(String.valueOf(java8UTC8));
         Assertions.assertEquals(
-                java8UTC8 ,
+                java8UTC8,
                 org.joda.time.LocalDateTime.parse(
                                 "2022-02-22 22:22:22",
                                 org.joda.time.format.DateTimeFormat.forPattern(timeFormat)

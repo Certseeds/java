@@ -2,13 +2,13 @@ import clz.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-
 import static org.junit.jupiter.api.Assertions.*;
 
 @SuppressWarnings("WeakerAccess")
 public class ContainerImplTest {
 
     private Container container;
+
     @BeforeEach
     public void setup() {
         System.out.println(0);

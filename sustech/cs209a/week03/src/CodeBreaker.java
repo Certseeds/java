@@ -4,7 +4,7 @@ import java.nio.file.FileAlreadyExistsException;
 import java.util.Arrays;
 import java.util.HashMap;
 
-public class CodeBreaker{
+public class CodeBreaker {
     public static void main(String[] args) {
         try {
             System.out.println(breaker(args));

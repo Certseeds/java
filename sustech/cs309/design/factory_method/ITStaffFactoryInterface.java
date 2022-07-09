@@ -1,4 +1,4 @@
 public interface ITStaffFactoryInterface {
 
-   ITStaff createITStaff();
+    ITStaff createITStaff();
 }
