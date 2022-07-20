@@ -13,13 +13,13 @@
         <version>${revision}</version>
     </parent>
     <modules>
-        <module>core</module>
-        <module>v1</module>
-        <module>v2</module>
-        <module>v3</module>
-        <module>2020core</module>
-        <module>2020task1</module>
-        <module>2020task2</module>
-        <module>2020task3</module>
+        <module>2019Fcore</module>
+        <module>2019Ftask1</module>
+        <module>2019Ftask2</module>
+        <module>2019Ftask3</module>
+        <module>2020Fcore</module>
+        <module>2020Fv1</module>
+        <module>2020Fv2</module>
+        <module>2020Fv3</module>
     </modules>
 </project>

@@ -14,7 +14,7 @@
     </parent>
 
     <modules>
-        <module>2020</module>
-        <module>2021</module>
+        <module>2019F</module>
+        <module>2020F</module>
     </modules>
 </project>

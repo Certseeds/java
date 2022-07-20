@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>nanoseeds.sustech.cs309.assignment3</groupId>
+    <artifactId>2020Fv2</artifactId>
+    <name>nanoseeds.sustech.cs309.assignment3.2020Fv2</name>
+    <description>cs309-ooad-assignment3-2020Fv2</description>
+    <parent>
+        <groupId>nanoseeds.sustech.cs309</groupId>
+        <artifactId>assignment3</artifactId>
+        <version>${revision}</version>
+    </parent>
+    <build>
+        <sourceDirectory>${project.basedir}</sourceDirectory>
+    </build>
+    <dependencies>
+        <dependency>
+            <groupId>nanoseeds.sustech.cs309.assignment3</groupId>
+            <artifactId>cs309_assignment3_2020Fcore</artifactId>
+            <version>${revision}</version>
+        </dependency>
+    </dependencies>
+</project>

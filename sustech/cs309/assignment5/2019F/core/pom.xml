@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>nanoseeds.sustech.cs309.assignment5.cs309_assignment5_2019F</groupId>
+    <artifactId>cs309_assignment5_2019Fcore</artifactId>
+    <name>nanoseeds.sustech.cs309.assignment5.2019F.core</name>
+    <description>cs309-ooad-assignment5-2019Fcore</description>
+    <packaging>jar</packaging>
+    <parent>
+        <groupId>nanoseeds.sustech.cs309.assignment5</groupId>
+        <artifactId>cs309_assignment5_2019F</artifactId>
+        <version>${revision}</version>
+    </parent>
+    <build>
+        <sourceDirectory>${project.basedir}</sourceDirectory>
+    </build>
+    <dependencies>
+        <dependency>
+            <groupId>org.jsoup</groupId>
+            <artifactId>jsoup</artifactId>
+            <version>1.14.3</version>
+        </dependency>
+    </dependencies>
+</project>
