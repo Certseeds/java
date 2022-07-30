@@ -3,17 +3,31 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>nanoseeds.testing</groupId>
+        <groupId>nanoseeds.java.testing</groupId>
         <artifactId>spring_as_lib</artifactId>
         <version>${revision}</version>
     </parent>
-    <groupId>nanoseeds.spring_as_lib</groupId>
+    <groupId>nanoseeds.java.testing.spring_as_lib</groupId>
     <artifactId>app</artifactId>
     <name>${project.groupId}.${project.artifactId}</name>
     <description>${project.groupId}.${project.artifactId}</description>
     <dependencies>
         <dependency>
-            <groupId>nanoseeds.spring_as_lib</groupId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.apache.logging.log4j</groupId>
+                    <artifactId>log4j-to-slf4j</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>jul-to-slf4j</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>nanoseeds.java.testing.spring_as_lib</groupId>
             <artifactId>lib</artifactId>
             <version>${revision}</version>
         </dependency>

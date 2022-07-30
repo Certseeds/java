@@ -3,11 +3,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>nanoseeds.testing</groupId>
+        <groupId>nanoseeds.java.testing</groupId>
         <artifactId>spring_as_lib</artifactId>
         <version>${revision}</version>
     </parent>
-    <groupId>nanoseeds.spring_as_lib</groupId>
+    <groupId>nanoseeds.java.testing.spring_as_lib</groupId>
     <artifactId>lib</artifactId>
     <name>${project.groupId}.${project.artifactId}</name>
     <description>${project.groupId}.${project.artifactId}</description>
