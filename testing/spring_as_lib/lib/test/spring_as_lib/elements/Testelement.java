@@ -1,17 +1,15 @@
-package elements;
-
+package spring_as_lib.elements;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.test.context.SpringBootTest;
-import spring_as_lib.elements.element;
+import org.springframework.context.annotation.ComponentScan;
 
 import java.util.Objects;
 
-@SpringBootTest(value = {"service.url=https://baidu.com", "service.username=USERNAME", "service.password=PASS", "service.token=weiziama"},
-        webEnvironment = SpringBootTest.WebEnvironment.NONE
-)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
+@ComponentScan("spring_as_lib")
 class TestElement {
     @Autowired
     private element E;

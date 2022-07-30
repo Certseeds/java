@@ -1,0 +1,5 @@
+service:
+  url: https://baidu.com
+  username: USERNAME
+  password: PASS
+  token: weiziama
