@@ -17,5 +17,6 @@
     <modules>
         <module>app</module>
         <module>lib</module>
+        <module>lib_test</module>
     </modules>
 </project>
