@@ -20,5 +20,6 @@
     <modules>
         <module>time</module>
         <module>spring_as_lib</module>
+        <module>immutable</module>
     </modules>
 </project>

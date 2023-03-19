@@ -94,7 +94,7 @@
         <dependency>
             <groupId>net.sf.jmimemagic</groupId>
             <artifactId>jmimemagic</artifactId>
-            <version>RELEASE</version>
+            <version>0.1.5</version>
         </dependency>
         <!---->
     </dependencies>
